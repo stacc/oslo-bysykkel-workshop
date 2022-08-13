@@ -2,6 +2,24 @@
   "name": "stacc-girlpower-h22",
   "version": "0.1.0",
   "private": true,
+  "contributors": [
+    {
+      "email": "reinu@stacc.com",
+      "name": "Rein Undheim"
+    },
+    {
+      "email": "gurop@stacc.com",
+      "name": "Guro Prestegard"
+    },
+    {
+      "email": "nataliew@stacc.com",
+      "name": "Natalie Wannaphong"
+    },
+    {
+      "email": "robing@stacc.com",
+      "name": "Robin Grundvåg"
+    }
+  ],
   "scripts": {
     "dev": "next dev",
     "build": "next build",
