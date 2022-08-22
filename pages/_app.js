@@ -1,4 +1,5 @@
 import Head from "next/head";
+import Layout from "../components/Layout";
 import "../styles/reset.css";
 
 export default function App({ Component, pageProps }) {
@@ -7,8 +8,17 @@ export default function App({ Component, pageProps }) {
       <Head>
         <title>Stacc girlpower workshop H22</title>
         <link rel="icon" href="/favicon-32x32.png" />
+        /* Nedenfor settes en custom font inn. */
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Inter:wght@500&display=swap"
+          rel="stylesheet"
+        />
       </Head>
-      <Component {...pageProps} />
+      <Layout>
+        <Component {...pageProps} />
+      </Layout>
     </>
   );
 }
