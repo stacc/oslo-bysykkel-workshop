@@ -2,11 +2,12 @@ import Head from "next/head";
 import Layout from "../components/Layout";
 import "../styles/reset.css";
 
+
 export default function App({ Component, pageProps }) {
   return (
     <>
       <Head>
-        <title>Stacc girlpower workshop H22</title>
+        <title>🌸Stacc GIRLPOWER H22🌸</title>
         <link rel="icon" href="/favicon-32x32.png" />
         /* Nedenfor settes en custom font inn. */
         <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -16,7 +17,8 @@ export default function App({ Component, pageProps }) {
           rel="stylesheet"
         />
       </Head>
-      <Layout>
+    
+      <Layout {...pageProps}>
         <Component {...pageProps} />
       </Layout>
     </>

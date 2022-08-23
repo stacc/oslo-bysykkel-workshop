@@ -1,0 +1,21 @@
+.headerWrapper{
+    position: sticky;
+    display: flex;
+    justify-content: space-between;
+    height: 80px;
+    background-color: rgb(174,54,44);
+}
+
+.navLinks{
+    display: flex;
+    flex-direction: row;
+    margin-right: 1em;
+    align-items: center;
+}
+
+.navLinks ul li{
+    list-style-type: none;
+    cursor: pointer;
+    color: white;
+
+}
