@@ -55,4 +55,4 @@ Klon ned repoet (altså last ned)
 
 # Begynn på oppgaver!
 
-Spør om hjelp om de står fast!
+Spør om hjelp om de står fast.
