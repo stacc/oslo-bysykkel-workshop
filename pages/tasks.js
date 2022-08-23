@@ -1,13 +1,14 @@
-import styles from "../styles/PageContentStyle.module.css"
-
+export async function getStaticProps(context) {
+  return {
+    props: {pageTitle: "💖OPPGAVER💖",
+  }, // will be passed to the page component as props
+  }
+}
 
 export default function Tasks() {
   return (
-    <div className={styles.container}>
-      <h1>Oppgaver</h1>
-      <div className={styles.content}>
+    <>
         <p>Hello world</p>
-      </div>
-    </div>
+    </>
   );
 }

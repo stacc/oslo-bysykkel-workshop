@@ -6,3 +6,17 @@
 .contentWrap {
   padding-bottom: 4rem;
 }
+
+.contentOnPageContainer {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: inherit;
+  padding: 30px 40px;
+}
+
+.section {
+  margin-top: 1em;
+}

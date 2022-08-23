@@ -1,8 +1,6 @@
 import Head from "next/head";
 import Layout from "../components/Layout";
 import "../styles/reset.css";
-import Header from "../components/menu/Header";
-import styles from "../styles/Home.module.css";
 
 
 export default function App({ Component, pageProps }) {
@@ -19,7 +17,8 @@ export default function App({ Component, pageProps }) {
           rel="stylesheet"
         />
       </Head>
-      <Layout>
+    
+      <Layout {...pageProps}>
         <Component {...pageProps} />
       </Layout>
     </>
