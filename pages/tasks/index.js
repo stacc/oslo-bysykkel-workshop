@@ -8,7 +8,7 @@ export default function Tasks() {
       {tasks.map(({ id, title, description }) => (
         <Link href={`/tasks/${id}`} passHref>
           <a className={styles.link}>
-            <h2>{title}</h2>
+            <h2 className={styles.title}>{title}</h2>
             <p>{description}</p>
           </a>
         </Link>

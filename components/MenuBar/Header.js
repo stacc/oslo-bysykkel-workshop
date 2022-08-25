@@ -7,7 +7,11 @@ export default function Header() {
   return (
     <header>
       <div className={styles.headerWrapper}>
-        <Image src="/stacc_logo_white.png" width={250} height={200} />
+        <Link href="/" passHref>
+          <a>
+            <Image src="/stacc_logo_white.png" width={150} height={50} />
+          </a>
+        </Link>
         <nav className={styles.navLinks}>
           {navLinks.map((link, index) => {
             return (
