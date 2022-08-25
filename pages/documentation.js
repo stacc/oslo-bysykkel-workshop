@@ -1,6 +1,14 @@
+import { getCurrentLocation } from "../utils/getCurrentLocation";
+
 export default function Documentation() {
+  function handleClick() {
+    getCurrentLocation()
+      .then((location) => console.log(location))
+      .catch((error) => console.log(error));
+  }
   return (
     <>
+      <button onClick={handleClick}>klikk</button>
       <p>Hello World</p>
     </>
   );
