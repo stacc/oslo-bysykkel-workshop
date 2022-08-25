@@ -3,7 +3,7 @@ import axios from "axios"
 const mapboxAxios = axios.create({
     baseURL: "https://api.mapbox.com",
     params: {
-        access_token: process.env.NEXT_PUBLIC_MAPBOX_TOKEN
+        access_token: process.env.NEXT_PUBLIC_MAPBOX_GL_ACCESS_TOKEN
     }
 })
 

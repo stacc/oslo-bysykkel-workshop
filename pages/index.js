@@ -11,7 +11,7 @@ export async function getStaticProps(context) {
     }
 }
 
-const Map = dynamic(() => import("../config/mapbox"), {
+const Map = dynamic(() => import("../config/Map"), {
     ssr: false
 });
 
@@ -21,6 +21,7 @@ export default function Home() {
             <h3>Velkommen til workshop i regi av STACC💪</h3>
             <p>Program:</p>
             <Map style="mapbox://styles/mapbox/streets-v9"
+            
                 containerStyle={{
                     height: "100vh",
                     width: "100vw"}}/>
