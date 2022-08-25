@@ -1,0 +1,43 @@
+.link {
+  all: unset;
+  text-align: center;
+  border: 2px solid #ccc;
+  padding: 2rem 5rem;
+  border-radius: 20px;
+}
+
+.link:hover {
+  cursor: pointer;
+  background-color: #f5f5f5;
+}
+
+.taskList {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  padding: 0;
+  gap: 3rem;
+}
+
+.buttonContainer {
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, 0);
+  bottom: 90px;
+  display: flex;
+  align-items: center;
+  margin-top: 5rem;
+  gap: 2rem;
+}
+
+.button {
+  all: unset;
+  text-decoration: none;
+  border: 2px solid #ccc;
+  border-radius: 5px;
+  padding: 1rem;
+  cursor: pointer;
+}
+
+.button:hover {
+  background-color: #f5f5f5;
+}
