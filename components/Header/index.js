@@ -1,7 +1,18 @@
-import { navLinks } from "./NavLinks";
 import Link from "next/link";
-import styles from "../../styles/Header.module.css";
+import styles from "./Header.module.css";
 import Image from "next/image";
+
+export const navLinks = [
+  { name: "Hjem", path: "/" },
+  {
+    name: "Oppgaver",
+    path: "/tasks",
+  },
+  {
+    name: "Dokumentasjon",
+    path: "/documentation",
+  },
+];
 
 export default function Header() {
   return (
@@ -15,11 +26,11 @@ export default function Header() {
         <nav className={styles.navLinks}>
           {navLinks.map((link, index) => {
             return (
-              <ul key={index}>
-                <Link href={link.path}>
-                  <li>{link.name}</li>
-                </Link>
-              </ul>
+              <Link href={link.path} passHref>
+                <a className={styles.link} key={index}>
+                  {link.name}
+                </a>
+              </Link>
             );
           })}
         </nav>
