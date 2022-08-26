@@ -64,4 +64,9 @@
 
 .taskContainer {
   margin-bottom: 5rem;
+  max-width: 600px;
+  min-width: 200px;
+  display: flex;
+  flex-direction: column;
+  margin-inline: auto;
 }
