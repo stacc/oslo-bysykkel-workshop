@@ -1,3 +1,5 @@
+![alt text](https://github.com/stacc/stacc-girlpower-h22/blob/main/public/images/banner.png?raw=true)
+
 # Girlpower kodeoppgave
 
 ## Installer
