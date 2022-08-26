@@ -6,11 +6,16 @@ export default function Tasks({ nr, tasksLength }) {
   const task = tasks.find((task) => task.id === nr);
   return (
     <div>
-      {task.Component}
+      <div className={styles.taskContainer}>{task.Component}</div>
       <div className={styles.buttonContainer}>
         {nr !== 1 && (
           <Link href={`/tasks/${nr - 1}`} passHref>
             <a className={styles.button}>Forrige oppgave</a>
+          </Link>
+        )}
+        {nr === 1 && (
+          <Link href={`/tasks`} passHref>
+            <a className={styles.button}>Til oppgaveoversikten</a>
           </Link>
         )}
         {nr !== tasksLength && (

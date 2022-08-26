@@ -75,3 +75,7 @@ select {
     scroll-behavior: auto !important;
   }
 }
+em {
+  color: rgb(174, 54, 44);
+  font-style: normal;
+}
