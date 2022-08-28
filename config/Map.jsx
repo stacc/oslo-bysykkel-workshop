@@ -6,7 +6,7 @@ export default ({ children }) => {
     <div className={styles.map}>
         <ReactMapGL
           mapboxAccessToken={process.env.NEXT_PUBLIC_MAPBOX_GL_ACCESS_TOKEN}
-          mapStyle="mapbox://styles/mapbox/streets-v9"
+          mapStyle="mapbox://styles/mapbox/light-v9"
           initialViewState={{
             width: "500px",
             height: "500px",
