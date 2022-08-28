@@ -1,6 +1,6 @@
 import Task1 from "./Task1";
 import Task2 from "./Task2";
-import Task3 from "./Task3";
+import Task3, {isCompleted as isTask3Completed} from "./Task3";
 import Task4 from "./Task4";
 import Task5 from "./Task5";
 import Task6 from "./Task6";
@@ -24,9 +24,10 @@ export const tasks = [
   },
   {
     id: 3,
-    title: "3. Tittel",
+    title: "3. Praktisk bruk av JSON data",
     Component: <Task3 />,
-    description: "Beskrivelse",
+    isCompleted: isTask3Completed,
+    description: "Vi fortsetter med å se litt hvordan bysykkel sin historiske JSON data ser ut og hvordan vi kan bruke det til å visualisere turen som har vart legnst.",
   },
   {
     id: 4,

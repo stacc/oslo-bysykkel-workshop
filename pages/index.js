@@ -1,7 +1,7 @@
 import "mapbox-gl/dist/mapbox-gl.css";
 import dynamic from "next/dynamic";
 
-const Map = dynamic(() => import("../config/mapbox"), {
+const Map = dynamic(() => import("../config/Map"), {
   ssr: false,
 });
 
