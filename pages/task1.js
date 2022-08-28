@@ -2,10 +2,11 @@ import styles from "../styles/Home.module.css";
 import "mapbox-gl/dist/mapbox-gl.css";
 import React from "react";
 import bysykkelJson from "../data/07.json";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { getCycleRoute } from "../api/mapbox";
 import { Layer, Source } from "react-map-gl";
 import Map from "../config/Map";
+import ReactCanvasConfetti from "react-canvas-confetti";
 
 /**
  * getStaticProps allows us to send properties about the page to a more generic layout file
@@ -27,6 +28,10 @@ export async function getStaticProps() {
  */
 const findRideWithLongestDuration = (data) => {
   // TODO - implement properly
+  return data.reduce((longest, ride) => {
+    if(ride.duration > longest.duration) return ride
+    return longest
+}, data.at(0))
   return data.at(0);
 };
 
@@ -54,8 +59,34 @@ const getRouteFromRide = (ride) => {
   return [start, end];
 };
 
+function getAnimationSettings() {
+    return {
+      startVelocity: 30,
+      spread: 360,
+      ticks: 60,
+      zIndex: 0,
+      particleCount: 150,
+      origin: {
+        x: Math.random() - 0.2,
+        y: Math.random() - 0.2
+      }
+    };
+  }
+  const canvasStyles = {
+    position: "fixed",
+    pointerEvents: "none",
+    width: "100%",
+    height: "100%",
+    top: 0,
+    left: 0
+  };
+
 export default function () {
   const [distanceSegments, setDistanceSegments] = useState([]);
+  const refAnimationInstance = useRef(null);
+  const getInstance = useCallback((instance) => {
+    refAnimationInstance.current = instance;
+  }, []);
 
   useEffect(() => {
     const asyncCallback = async () => {
@@ -73,6 +104,19 @@ export default function () {
         longestDuration,
         ride.duration
       );
+      if (ride.duration === longestDuration && refAnimationInstance.current) {
+        let counter = 0;
+        let intervalId = setInterval(() => {
+            refAnimationInstance.current(getAnimationSettings());
+            refAnimationInstance.current(getAnimationSettings());
+
+            if(counter++ >= 5) {
+                clearInterval(intervalId)
+            }
+
+        }, 250)
+      }
+    window.sessionStorage.setItem("CompletedTask1", true)
     };
     asyncCallback();
   }, [bysykkelJson]);
@@ -136,6 +180,7 @@ export default function () {
           />
         </Source>
       </Map>
+      <ReactCanvasConfetti refConfetti={getInstance} style={canvasStyles} />
     </div>
   );
 }
