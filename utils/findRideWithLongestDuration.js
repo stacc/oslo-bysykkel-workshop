@@ -4,13 +4,7 @@
  * @return ride with the longest duration cycled
  */
 const findRideWithLongestDuration = (data) => {
-  // TODO - Find the longest ride in the dataset
-  // return data.reduce((longest, ride) => {
-  //   if (ride.duration > longest.duration) return ride;
-  //   return longest;
-  // }, data.at(0));
-  // return data.slice(10, 20);
-  
+  // TODO - implement properly
   return data.at(0)
 };
 
