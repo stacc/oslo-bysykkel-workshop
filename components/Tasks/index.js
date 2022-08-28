@@ -3,6 +3,9 @@ import Task2 from "./Task2";
 import Task3 from "./Task3";
 import Task4 from "./Task4";
 import Task5 from "./Task5";
+import Task6 from "./Task6";
+import Task7 from "./Task7";
+
 
 export const tasks = [
   {
@@ -36,6 +39,20 @@ export const tasks = [
     title: "5. Hvor er vi?!",
     Component: <Task5 />,
     description:
-      "Vi ønsker nå å finne ut hvor vi er, og hvor den nærmeste bysykkel stasjonen er.",
+      "Vi ønsker nå å finne ut hvor vi er, og hvor den nærmeste bysykkelstativet er.",
+  },
+  {
+    id: 6,
+    title: "6. Fra hit til dit",
+    Component: <Task6 />,
+    description:
+        "Vis en rute på kartet fra en valgfri stasjon til en annen",
+  },
+  {
+    id: 7,
+    title: "7. Send inn alle detaljene",
+    Component: <Task7 />,
+    description:
+        "Bruk et skjema for å sende inn stedene du vil reise til og fra",
   },
 ];

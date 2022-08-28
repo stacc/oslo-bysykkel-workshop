@@ -8,7 +8,6 @@ export default function Task3() {
           <b>Kort fortalt: </b> oppgaveteksten her.
         </p>
       </TLDR>
-      <br />
     </div>
   );
 }
