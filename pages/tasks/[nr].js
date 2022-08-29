@@ -46,6 +46,10 @@ export async function getServerSideProps({ params }) {
     );
     stations = JSON.stringify(res.data.data.stations);
   }
+  /**Oppgave 7: Vis tilgjengelig stasjoner */
+  if (params.nr === "7") {
+    //TODO: Her skal du skrive et GET-kall og returnere korrekt data.
+  }
   return {
     props: { pageTitle: task.title, nr, tasksLength, stations }, // will be passed to the page component as props
   };
