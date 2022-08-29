@@ -63,7 +63,7 @@ export default function Task3() {
       <TLDR>
         <p>
           <b>Kort fortalt: </b> Basert på den historsike dataen til bysykkel,
-          hent ut den turen som har varte lengst. (Se i{" "}
+          hent ut den turen som har varte lengst. <br/>(Tips: Se i{" "}
           <code>utils/findRideWithLongestDuration.js</code>)
         </p>
       </TLDR>
@@ -92,18 +92,18 @@ export default function Task3() {
       </Map>
       <b>Beskrivelse:</b>
       <div>
-        For å starte ballen litt og se litt på hva muligheter bysykkel api-et
-        har å by på, så har vi hentet ut et par historiske datasett som man kan
+        For å starte så kan vi se litt på hva muligheter bysykkel api-et
+        har å by på. Vi har hentet ut et par historiske datasett som man kan
         bruke for å leke litt med. Her har vi laget en side som kan ta en
         sykkeltur og vise raskeste sykkelvei mellom start og slutt av den
         sykkelturen. (NB: Dette er ikke nødvendigvis ruten noen har tatt, men er
         en beregnet rute mellom start og sluttstoppet.)
         <br />
         <br /> Dersom man ser i datamappen så har vi ulike jsonfiler som heter
-        01, 02, 03, etc. Dette samsvarer med en måned i 2022 som der hentet ut.
+        01.json, 02.json, 03.json, etc. Hver fil samsvarer med en måned i 2022.
         Om dere ser i en av disse filene så vil dere nok se tonnevis med tekst.
         Dette er egentlig en liste med ulike sykkelturer som er gjort med
-        bysykkel. Her er en av turene:
+        bysykkel. Her er et utdrag av en av turene:
         <br />
         <br />
         <code>
@@ -142,12 +142,12 @@ export default function Task3() {
         Listen inneholder hundrevis av turer, så er litt vanskelig å forstå med
         en helhet, men individuelt er det ganske lett å se hva informasjon hver
         tur har. Her ser vi når turen startet, når den slutet, hvor lenge den
-        varte ( i sekunder ), informasjon om start stasjonen (navn, hvor den er,
+        varte (i sekunder), informasjon om start stasjonen (navn, hvor den er,
         etc) og sluttstasjonen.
         <br />
-        <br /> Fra dataen ser vi at vi har allerede latitiden og longituden (de
-        geografiske koordinatene) allerede. Under har vi allerede laget et kart
-        som kan brukes til å vise reisen, vi har også laget koden som tar en av
+        <br /> Fra dataen ser vi at vi har allerede lengdegraden og breddegraden (de
+        geografiske koordinatene) allerede. På toppen har vi allerede laget et kart
+        som kan brukes til å vise reisen, vi har også laget koden som tar en til ti av
         turene og beregner korteste sykkeldistanse mellom start og slutt stoppet
         og viser det på et kart, men det mangler beregning på hvordan å hente ut
         turen med lengst varighet. Har du mulighet til å bistå?
