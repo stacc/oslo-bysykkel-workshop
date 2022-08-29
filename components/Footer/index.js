@@ -1,13 +1,36 @@
+import Image from "next/image";
 import Link from "next/link";
 import styles from "./Footer.module.css";
+
+const socials = [
+  {
+    icon: "/icons/facebook.svg",
+    link: "https://www.facebook.com/stacc.no",
+  },
+  {
+    icon: "/icons/instagram.svg",
+    link: "https://www.instagram.com/stacc.no",
+  },
+  {
+    icon: "/icons/twitter.svg",
+    link: "https://twitter.com/stacc_no",
+  },
+  {
+    icon: "/icons/linkedin.svg",
+    link: "https://www.linkedin.com/company/stacc",
+  },
+];
 
 export default function Footer() {
   return (
     <footer className={styles.footer}>
-      {new Date().getFullYear()}©
-      <Link href="https://stacc.com" passHref>
-        <a className={styles.link}>Stacc</a>
-      </Link>
+      {socials.map(({ icon, link }, index) => (
+        <Link href={link} passHref>
+          <a key={index} className={styles.link}>
+            <Image src={icon} width="20" height="20" />
+          </a>
+        </Link>
+      ))}
     </footer>
   );
 }

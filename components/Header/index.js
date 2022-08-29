@@ -8,10 +8,6 @@ export const navLinks = [
     name: "Oppgaver",
     path: "/tasks",
   },
-  {
-    name: "Dokumentasjon",
-    path: "/documentation",
-  },
 ];
 
 export default function Header() {
@@ -26,7 +22,7 @@ export default function Header() {
         <nav className={styles.navLinks}>
           {navLinks.map((link, index) => {
             return (
-              <Link key={index} href={link.path} passHref>
+              <Link href={link.path} passHref>
                 <a className={styles.link} key={index}>
                   {link.name}
                 </a>
