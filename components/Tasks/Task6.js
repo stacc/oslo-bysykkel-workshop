@@ -1,6 +1,6 @@
 import TLDR from "../TLDR";
 
-export default function Task3() {
+export default function Task6() {
   return (
     <div>
       <TLDR>

@@ -1,11 +1,11 @@
 import Link from "next/link";
-import { tasks } from "../../components/Tasks";
+import { getTasks } from "../../components/Tasks";
 import styles from "../../styles/Tasks.module.css";
 
 export default function Tasks() {
   return (
     <ul className={styles.taskList}>
-      {tasks.map(({ id, title, description }) => (
+      {getTasks().map(({ id, title, description }) => (
         <Link href={`/tasks/${id}`} passHref>
           <a className={styles.link} key={id}>
             <h2 className={styles.title}>{title}</h2>
