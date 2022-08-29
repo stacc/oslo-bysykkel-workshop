@@ -22,10 +22,8 @@ export default function Header() {
         <nav className={styles.navLinks}>
           {navLinks.map((link, index) => {
             return (
-              <Link href={link.path} passHref>
-                <a className={styles.link} key={index}>
-                  {link.name}
-                </a>
+              <Link key={index} href={link.path} passHref>
+                <a className={styles.link}>{link.name}</a>
               </Link>
             );
           })}

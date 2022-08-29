@@ -25,8 +25,8 @@ export default function Footer() {
   return (
     <footer className={styles.footer}>
       {socials.map(({ icon, link }, index) => (
-        <Link href={link} passHref>
-          <a key={index} className={styles.link}>
+        <Link key={index} href={link} passHref>
+          <a className={styles.link}>
             <Image src={icon} width="20" height="20" />
           </a>
         </Link>
