@@ -2,7 +2,8 @@
 
   .map {
     display: flex;
-    width: 600px;
+    max-width: 600px;
+    min-width: 200px;
     margin: 2rem 0;
     height: 400px;
   }
