@@ -1,26 +1,46 @@
 import TLDR from "../TLDR";
 import styles from "../../styles/Tasks.module.css";
 import React from "react";
-import bysykkelJson from "../../data/07.json";
+import bysykkelJson from "../../data/06.json";
 import { useEffect, useState } from "react";
 import { getCycleRoute } from "../../api/mapbox";
-import { Layer, Source } from "react-map-gl";
-import Map from "../../config/Map";
 import getRouteFromRide from "../../utils/getRouteFromRide";
-import findRideWithLongestDuration from "../../utils/findRideWithLongestDuration";
+import findRidesWithLongestDuration from "../../utils/findRidesWithLongestDuration";
+import { MapRouteList } from "../MapRouteList";
+import { getGeodesicDistance } from "../../utils/getGeodesicDistance";
+
+const precomputeDistances = (data) => {
+  return data.map((x) => ({
+    ...x,
+    distance: getGeodesicDistance(
+      x.start_station_latitude,
+      x.start_station_longitude,
+      x.end_station_latitude,
+      x.end_station_longitude
+    ),
+  }));
+};
+
+let precomputedBysykkelJson = precomputeDistances(bysykkelJson);
 
 export function isCompleted() {
-  const longestDuration = Math.max(...bysykkelJson.map((x) => x.duration));
-  const ride = findRideWithLongestDuration(bysykkelJson);
+  const longestDuration = bysykkelJson
+    .map((x) => x.duration)
+    .sort((a, b) => b - a)
+    .slice(0, 10);
+  let rides = findRidesWithLongestDuration(precomputedBysykkelJson);
+  if (!rides?.length) {
+    rides = [rides];
+  }
 
   try {
-    // Ensure the ride is valid
-    getRouteFromRide(ride);
+    // Ensure the rides are valid
+    rides.map((x) => getRouteFromRide(x));
   } catch (e) {
     return false;
   }
 
-  return longestDuration === ride?.duration;
+  return rides.every((ride, i) => ride.duration === longestDuration[i]);
 }
 
 export default function Task3() {
@@ -28,7 +48,11 @@ export default function Task3() {
 
   useEffect(() => {
     const asyncCallback = async () => {
-      let rides = findRideWithLongestDuration(bysykkelJson);
+      let rides = findRidesWithLongestDuration(precomputedBysykkelJson);
+
+      if(!rides) {
+        throw Error("findRidesWithLongestDuration returned nothing")
+      }
 
       // Allow return of one or more rides
       if (!rides.length) {
@@ -50,7 +74,7 @@ export default function Task3() {
             const route = await getCycleRoute(bikeRoute, {
               format: "geojson",
             });
-            return route.routes[0].geometry;
+            return { ...ride, geometry: route.routes[0].geometry };
           })
         )
       );
@@ -63,41 +87,19 @@ export default function Task3() {
       <TLDR>
         <p>
           <b>Kort fortalt: </b> Basert på den historsike dataen til bysykkel,
-          hent ut den turen som har varte lengst. <br/>(Tips: Se i{" "}
-          <code>utils/findRideWithLongestDuration.js</code>)
+          hent ut de lengste turene. <br />
+          (Tips: Se i <code>utils/findRideWithLongestDuration.js</code>)
         </p>
       </TLDR>
-      <Map>
-        {routes.map((route, key) => (
-          <>
-            <Source key={key} id={`${key}_route`} type="geojson" data={route}>
-              <Layer
-                type="line"
-                layout={{
-                  visibility: "visible",
-                  "line-cap": "round",
-                  "line-join": "round",
-                }}
-                paint={{
-                  "line-color": `hsl(${
-                    (key / routes.length) * 360
-                  }deg,50%,50%)`,
-                  "line-width": 4,
-                  "line-opacity": 0.75,
-                }}
-              />
-            </Source>
-          </>
-        ))}
-      </Map>
+      <MapRouteList routes={routes} />
       <b>Beskrivelse:</b>
       <div>
-        For å starte så kan vi se litt på hva muligheter bysykkel api-et
-        har å by på. Vi har hentet ut et par historiske datasett som man kan
-        bruke for å leke litt med. Her har vi laget en side som kan ta en
-        sykkeltur og vise raskeste sykkelvei mellom start og slutt av den
-        sykkelturen. (NB: Dette er ikke nødvendigvis ruten noen har tatt, men er
-        en beregnet rute mellom start og sluttstoppet.)
+        For å starte så kan vi se litt på hva muligheter bysykkel api-et har å
+        by på. Vi har hentet ut et par historiske datasett som man kan bruke for
+        å leke litt med. Her har vi laget en side som kan ta en sykkeltur og
+        vise raskeste sykkelvei mellom start og slutt av den sykkelturen. (NB:
+        Dette er ikke nødvendigvis ruten noen har tatt, men er en beregnet rute
+        mellom start og sluttstoppet.)
         <br />
         <br /> Dersom man ser i datamappen så har vi ulike jsonfiler som heter
         01.json, 02.json, 03.json, etc. Hver fil samsvarer med en måned i 2022.
@@ -145,12 +147,18 @@ export default function Task3() {
         varte (i sekunder), informasjon om start stasjonen (navn, hvor den er,
         etc) og sluttstasjonen.
         <br />
-        <br /> Fra dataen ser vi at vi har allerede lengdegraden og breddegraden (de
-        geografiske koordinatene) allerede. På toppen har vi allerede laget et kart
-        som kan brukes til å vise reisen, vi har også laget koden som tar en til ti av
-        turene og beregner korteste sykkeldistanse mellom start og slutt stoppet
-        og viser det på et kart, men det mangler beregning på hvordan å hente ut
-        turen med lengst varighet. Har du mulighet til å bistå?
+        <br />
+        Vi har også lagt til et eget felt som heter <code>distance</code>, dette er
+        distansen mellom start og slutt stoppet og kan brukes til å estimere
+        distansen som ble syklet.
+        <br />
+        <br />
+        Fra dataen ser vi at vi har allerede lengdegraden og breddegraden (de
+        geografiske koordinatene) allerede. På toppen har vi allerede laget et
+        kart som kan brukes til å vise reisen, vi har også laget koden som tar
+        en til ti av turene og beregner korteste sykkeldistanse mellom start og
+        slutt stoppet og viser det på et kart, men det mangler beregning på
+        hvordan å hente ut den lengste turen. Har du mulighet til å bistå?
         <br />
         <br />
       </div>
@@ -159,15 +167,14 @@ export default function Task3() {
         <div className={styles.list}>
           <b>Valgfrie oppgaver:</b>
           <div>
-            1. Prøv å endre datasettet som er brukt ved å endre import i toppen av{" "}
-            <code>components/Tasks/Task3.js</code> og se om det påvirker turen.
+            1. Prøv å endre datasettet som er brukt ved å endre import i toppen
+            av <code>components/Tasks/Task3.js</code> og se om det påvirker
+            turen.
           </div>
           <div>
             2. Prøv å legge til støtte for å hente ut de top 10 lengste turene
           </div>
-          <div>
-            3. Prøv å finne ut hva som er dei 10 mest populære turene.
-          </div>
+          <div>3. Prøv å finne ut hva som er dei 10 mest populære turene.</div>
         </div>
       </TLDR>
     </div>

@@ -3,9 +3,9 @@
  * @param {Array} data - Historical data of rides from Bergen Bysykkel api
  * @return ride with the longest duration cycled
  */
-const findRideWithLongestDuration = (data) => {
+const findRidesWithLongestDuration = (data) => {
   // TODO - implement properly
   return data.at(0)
 };
 
-export default findRideWithLongestDuration;
+export default findRidesWithLongestDuration;
