@@ -19,7 +19,7 @@ export default function Tasks({ nr, tasksLength, stations }) {
             </Link>
           )}
           {nr === 1 && (
-            <Link href={`/tasks`} passHref>
+            <Link href={`/`} passHref>
               <a className={styles.button}>Til oppgaveoversikten</a>
             </Link>
           )}

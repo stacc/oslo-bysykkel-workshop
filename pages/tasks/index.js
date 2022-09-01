@@ -19,6 +19,6 @@ export default function Tasks() {
 
 export async function getStaticProps() {
   return {
-    props: { pageTitle: "💖OPPGAVER💖" }, // will be passed to the page component as props
+    props: { pageTitle: "OPPGAVER" }, // will be passed to the page component as props
   };
 }
