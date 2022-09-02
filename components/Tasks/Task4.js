@@ -1,14 +1,11 @@
 import { useState } from "react";
 import Map from "../../config/Map";
-import { getClosestStation } from "../../utils/getClosestStation";
-import { getCurrentLocation } from "../../utils/getCurrentLocation";
 import TLDR from "../TLDR";
 import styles from "../../styles/Tasks.module.css";
 import { Marker, Source, Layer } from "react-map-gl";
-import { getPedestrianRoute } from "../../api/mapbox";
 
 export default function Task5({ stations }) {
-  const [location, setLocation] = useState({ lat: "", lon: "" });
+  const [location, setLocation] = useState({ lat: "", long: "" });
   const [route, setRoute] = useState([]);
 
   // Bruk denne funksjonen for å finne din lokasjon
@@ -39,7 +36,7 @@ export default function Task5({ stations }) {
       fullført. Vi er nødt til å bruke asynkrone funksjoner (definert med{" "}
       <code>async function</code>) for å både ut lokasjonen vår. Kan du ta i
       bruk <code>async function getMyLocation</code> i{" "}
-      <code>components/tasks/Task5</code> for å finne din posisjon? Les mer om
+      <code>components/tasks/Task4</code> for å finne din posisjon? Les mer om
       asynkrone funksjoner her:{" "}
       <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/async_function">
         MDN
@@ -50,9 +47,11 @@ export default function Task5({ stations }) {
       <br />
       Det andre konseptet vi bør kunne nå er en funksjon som kalles useState og
       som kommer fra React. useState tillater oss å lagre data som kan muteres
-      (oppdateres) helt til du forlater siden eller refresher. Vi har i denne
-      oppgaven definert to useState funksjoner som du kan bruke til å lagre din
-      lokasjon og ruten til stasjonen.
+      (oppdateres) helt til du forlater siden eller refresher. useState gir oss
+      to metoder, en som setter verdien (<code>setLocation</code>) og en som
+      henter verdien (<code>location</code>) Vi har i denne oppgaven definert to
+      useState funksjoner som du kan bruke til å lagre din lokasjon og ruten til
+      stasjonen.
       <br />
       <br />
       <Map>

@@ -6,7 +6,7 @@ export default function App({ Component, pageProps }) {
   return (
     <>
       <Head>
-        <title>🌸Stacc GIRLPOWER H22🌸</title>
+        <title>Stacc Workshop</title>
         <link rel="icon" href="/favicon-32x32.png" />
       </Head>
 

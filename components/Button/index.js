@@ -8,7 +8,8 @@ export function TransparentButton({
   height,
 }) {
   return (
-    <div
+    <button
+      type="button"
       onClick={onClick}
       style={{ height }}
       onMouseOver={onMouseOver}
@@ -16,6 +17,6 @@ export function TransparentButton({
       className={[styles.button, styles.transparentButton].join(" ")}
     >
       {children}
-    </div>
+    </button>
   );
 }

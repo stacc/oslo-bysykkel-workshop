@@ -27,7 +27,7 @@ export const getPedestrianRoute = async (
   options = { format: "geojson" }
 ) => {
   const points = coordinates.reduce((route, coord) => {
-    return [route, `${coord.lon},${coord.lat}`].filter((x) => !!x).join(";");
+    return [route, `${coord.long},${coord.lat}`].filter((x) => !!x).join(";");
   }, "");
 
   const { data } = await mapboxAxios.get(

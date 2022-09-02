@@ -1,6 +1,5 @@
 import TLDR from "../TLDR";
 import styles from "../../styles/Tasks.module.css";
-import React from "react";
 import bysykkelJson from "../../data/06.json";
 import { useEffect, useState } from "react";
 import { getCycleRoute } from "../../api/mapbox";
@@ -50,8 +49,8 @@ export default function Task3() {
     const asyncCallback = async () => {
       let rides = findRidesWithLongestDuration(precomputedBysykkelJson);
 
-      if(!rides) {
-        throw Error("findRidesWithLongestDuration returned nothing")
+      if (!rides) {
+        throw Error("findRidesWithLongestDuration returned nothing");
       }
 
       // Allow return of one or more rides
@@ -148,8 +147,8 @@ export default function Task3() {
         etc) og sluttstasjonen.
         <br />
         <br />
-        Vi har også lagt til et eget felt som heter <code>distance</code>, dette er
-        distansen mellom start og slutt stoppet og kan brukes til å estimere
+        Vi har også lagt til et eget felt som heter <code>distance</code>, dette
+        er distansen mellom start og slutt stoppet og kan brukes til å estimere
         distansen som ble syklet.
         <br />
         <br />

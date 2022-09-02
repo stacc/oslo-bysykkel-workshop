@@ -5,16 +5,16 @@ export function getClosestStation(stations, location) {
   let closestStation = stations[0];
   let closestDistance = getGeodesicDistance(
     location.lat,
-    location.lon,
+    location.long,
     closestStation.lat,
-    closestStation.lon
+    closestStation.long
   );
   for (let i = 1; i < stations.length; i++) {
     let distance = getGeodesicDistance(
       location.lat,
-      location.lon,
+      location.long,
       stations[i].lat,
-      stations[i].lon
+      stations[i].long
     );
     if (distance < closestDistance) {
       closestDistance = distance;
@@ -23,4 +23,3 @@ export function getClosestStation(stations, location) {
   }
   return closestStation;
 }
-

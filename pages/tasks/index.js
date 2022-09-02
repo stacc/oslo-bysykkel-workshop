@@ -6,8 +6,8 @@ export default function Tasks() {
   return (
     <ul className={styles.taskList}>
       {getTasks().map(({ id, title, description }) => (
-        <Link href={`/tasks/${id}`} passHref>
-          <a className={styles.link} key={id}>
+        <Link key={id} href={`/tasks/${id}`} passHref>
+          <a className={styles.link}>
             <h2 className={styles.title}>{title}</h2>
             <p>{description}</p>
           </a>

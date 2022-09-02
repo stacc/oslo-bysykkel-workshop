@@ -4,7 +4,7 @@ import Task3, { isCompleted as isTask3Completed } from "./Task3";
 import Task4 from "./Task4";
 import Task5 from "./Task5";
 import Task6 from "./Task6";
-import Task8, { isCompleted as isTask8Completed } from "./Task8";
+import Task7, { isCompleted as isTask7Completed } from "./Task7";
 
 export const getTasks = (props = {}) => [
   {
@@ -49,10 +49,10 @@ export const getTasks = (props = {}) => [
     description: "Gjøre et kall mot endepunkt for å hente ut sykkel stasjoner",
   },
   {
-    id: 8,
-    title: "8. Send inn alle detaljene",
-    Component: <Task8 {...props} />,
-    isCompleted: isTask8Completed,
+    id: 7,
+    title: "7. Send inn alle detaljene",
+    Component: <Task7 {...props} />,
+    isCompleted: isTask7Completed,
     description:
       "Bruk et skjema for å sende inn stedene du vil reise til og fra",
   },
