@@ -46,6 +46,7 @@ export const getTasks = (props = {}) => [
     id: 6,
     title: "6. Fra hit til dit",
     Component: <Task6 {...props} />,
+    isCompleted: isTask6Completed,
     description: "Vis en rute på kartet fra en valgfri stasjon til en annen",
   },
   {
