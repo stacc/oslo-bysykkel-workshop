@@ -3,7 +3,7 @@ import Task2 from "./Task2";
 import Task3, { isCompleted as isTask3Completed } from "./Task3";
 import Task4 from "./Task4";
 import Task5 from "./Task5";
-import Task6,  { isCompleted as isTask6Completed } from "./Task6";
+import Task6, { isCompleted as isTask6Completed } from "./Task6";
 import Task7 from "./Task7";
 
 export const getTasks = (props = {}) => [
@@ -50,9 +50,8 @@ export const getTasks = (props = {}) => [
   },
   {
     id: 7,
-    title: "8. Vis tilgjengelig kapasitet",
-    Component: <Task7 {...props}/>,
-    description:
-        "Visualiser den resterende kapasiteten på stasjoner",
+    title: "7. Vis tilgjengelig kapasitet",
+    Component: <Task7 {...props} />,
+    description: "Visualiser den resterende kapasiteten på stasjoner",
   },
 ];

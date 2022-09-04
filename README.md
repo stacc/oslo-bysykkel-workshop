@@ -1,10 +1,9 @@
-![alt text](https://github.com/stacc/stacc-girlpower-h22/blob/main/public/images/banner.png?raw=true)
-
 ## Installer
 
 Om du ikkje allerede har dette installert:
 
 - node/npm: https://nodejs.org/en/
+  - Last ned, og åpne installasjonsprogrammet. Følg instruksjonene og sørg for at du installerer den lokalt på pc'en, dvs ikke i onedrive eller lignende skylagrings plasseringer.
   - husk å opne å lukke terminalen etterpå for å få oppdatert path variables
   - sjekk installasjonen:
     - `node -v`
@@ -25,7 +24,7 @@ Lag ein folder for git prosjekter (om du ikkje allerede har det)
 Gå til projects
 `cd projects`
 Klon ned repoet (altså last ned)
-`git clone https://github.com/stacc/stacc-girlpower-h22.git`
+`git clone "REPO LINK"`
 
 ## Kjøre prosjektet
 
@@ -39,4 +38,4 @@ Klon ned repoet (altså last ned)
 
 # Begynn på oppgaver!
 
-Spør om hjelp om de står fast.
+Oppgavene finnes i nettsiden som du nå kjører. Navigerer deg til localhost:3000 i nettleseren din og begynn på oppgavene!
