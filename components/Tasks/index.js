@@ -2,10 +2,9 @@ import Task1 from "./Task1";
 import Task2 from "./Task2";
 import Task3, { isCompleted as isTask3Completed } from "./Task3";
 import Task4 from "./Task4";
-import Task5 from "./Task5";
+import Task5,  { isCompleted as isTask5Completed } from "./Task5";
 import Task6 from "./Task6";
-import Task7, { isCompleted as isTask7Completed } from "./Task7";
-import Task8 from "./Task8";
+import Task7 from "./Task7";
 
 export const getTasks = (props = {}) => [
   {
@@ -51,16 +50,8 @@ export const getTasks = (props = {}) => [
   },
   {
     id: 7,
-    title: "7. Send inn alle detaljene",
-    Component: <Task7 {...props} />,
-    isCompleted: isTask7Completed,
-    description:
-      "Bruk et skjema for å sende inn stedene du vil reise til og fra",
-  },
-  {
-    id: 8,
     title: "8. Vis tilgjengelig kapasitet",
-    Component: <Task8 {...props}/>,
+    Component: <Task7 {...props}/>,
     description:
         "Visualiser den resterende kapasiteten på stasjoner",
   },
