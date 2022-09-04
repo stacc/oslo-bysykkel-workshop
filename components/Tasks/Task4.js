@@ -80,7 +80,9 @@ export default function Task5({ stations }) {
       <br />
       <TLDR>
         <ul className={styles.list}>
-          <li>Valgfrie oppgaver:</li>
+          <li>
+            <b>Valgfrie oppgaver:</b>
+          </li>
           <li>
             1. Bruke hjelpefunksjonen <code>getPedestrianRoute</code> i{" "}
             <code>/api/mapbox.js</code> for å tegne den raskeste ruten mellom
