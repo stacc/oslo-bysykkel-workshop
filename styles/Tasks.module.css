@@ -72,30 +72,34 @@
 }
 
 .form {
-    display: flex;
-    flex-direction: column;
-    padding: 2.5em 1em 1em 1em;
-    border-radius: 5px;
-    border: solid darkgray;
+  display: flex;
+  flex-direction: column;
+  padding: 2.5em 1em 1em 1em;
+  border-radius: 5px;
+  border: solid darkgray;
 }
 .form > * {
-    padding: 0em 1em 1em 1em;
+  padding: 0em 1em 1em 1em;
 }
 .form > input {
-    padding: 1em;
-    align-self: end;
+  padding: 1em;
+  align-self: end;
 }
 
 .dropDown {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
 }
 
 .section {
-    padding: 0 0 2em 0;
+  padding: 0 0 2em 0;
 }
 .list {
   display: flex;
   flex-direction: column;
   gap: 10px;
+}
+
+.styledList {
+  list-style: circle;
 }

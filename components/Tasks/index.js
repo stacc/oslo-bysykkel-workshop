@@ -5,6 +5,7 @@ import Task4 from "./Task4";
 import Task5 from "./Task5";
 import Task6, { isCompleted as isTask6Completed } from "./Task6";
 import Task7 from "./Task7";
+import TaskX from "./TaskX";
 
 export const getTasks = (props = {}) => [
   {
@@ -34,7 +35,7 @@ export const getTasks = (props = {}) => [
     title: "4. Hvor er vi?!",
     Component: <Task4 {...props} />,
     description:
-      "Vi ønsker nå å finne ut hvor vi er, og hvor den nærmeste bysykkelstativet er.",
+      "Vi ønsker nå å finne ut hvor vi er, og hvor det nærmeste bysykkelstativet er.",
   },
   {
     id: 5,
@@ -54,5 +55,12 @@ export const getTasks = (props = {}) => [
     title: "7. Vis tilgjengelig kapasitet",
     Component: <Task7 {...props} />,
     description: "Visualiser den resterende kapasiteten på stasjoner",
+  },
+  {
+    id: 8,
+    title: "X. The sky is the limit",
+    Component: <TaskX {...props} />,
+    description:
+      "Du har nå gjort ferdig alle oppgavene vi har forbedret, gratulerer!",
   },
 ];
