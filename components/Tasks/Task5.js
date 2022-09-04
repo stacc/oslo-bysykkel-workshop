@@ -2,20 +2,12 @@ import TLDR from "../TLDR";
 import styles from "../../styles/Tasks.module.css";
 import DropDown from "../InputFields/DropDown";
 import Image from "next/image";
+import {formatStationsForDropdown} from "../../utils/formatStationsForDropdown";
+
 export default function Task5({ stations }) {
-  let parsedStations = [];
-  if (stations.length > 0) {
-    parsedStations = JSON.parse(stations);
-  }
+  const choices = formatStationsForDropdown(stations)
 
-  const choices = parsedStations.map((e) => {
-    return {
-      label: e.name,
-      value: JSON.stringify(e),
-    };
-  });
-
-  return (
+    return (
     <div>
       <TLDR>
         <p>
@@ -63,7 +55,7 @@ export default function Task5({ stations }) {
         <br/>
         <p>
         Her skal du implementere et GET-kall mot endepunktet
-        <code> https://gbfs.urbansharing.com/bergenbysykkel.no/station_information.json </code> 
+        <code> https://gbfs.urbansharing.com/bergenbysykkel.no/station_information.json </code>
         for å kunne hente ut alle stasjoner.
         </p>
         <p>Dette er et eksempel på responsen til kallet: </p>
@@ -82,7 +74,7 @@ export default function Task5({ stations }) {
 
       <div className={styles.section}>
         <h4>Resultat</h4>
-      <DropDown choices={choices} label="Tilgjengelig stasjoner"></DropDown>
+      <DropDown choices={choices} label="Tilgjengelig stasjoner"/>
 
       </div>
     </div>
