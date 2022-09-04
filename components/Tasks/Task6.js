@@ -6,24 +6,23 @@ import {Layer, Source} from "react-map-gl";
 import React, {useState} from "react";
 import {getCycleRoute} from "../../api/mapbox";
 import {formatStationsForDropdown} from "../../utils/formatStationsForDropdown";
-
+import DropDown from "../InputFields/DropDown";
 
 const Task6 = ({stations}) => {
     const choices = formatStationsForDropdown(stations)
     const [route, setRoute] = useState()
 
-    const onSubmit = async (e) => {
-        e.preventDefault();
-        const formData = new FormData(e.target)
+    const onSubmit = async (dataFromForm) => {
+        //Her prosesseres dataen slik at den kan brukes
+        dataFromForm.preventDefault();
+        const formData = new FormData(dataFromForm.target)
         const formProps = Object.fromEntries(formData)
 
-        //hent ut verdiene fra dropdownene her
+        //hent ut verdiene fra dropdownene under
 
         //const departureStand = JSON.parse(formProps.???)
         //const arrivalStand = JSON.parse(formProps.???)
         //console.log("➡️departureStand", departureStand, "⬅️arrivalStand", arrivalStand)
-
-
 
         const trip = [
             //avreise
@@ -43,7 +42,7 @@ const Task6 = ({stations}) => {
             <TLDR>
                 <p>
                     <b>Kort fortalt: </b>
-                    Bruk elementene du finner i <code>/components/inputFields</code> for å lage et skjema,
+                    Bruk elementene du finner i <code>/components/InputFields</code> for å lage et skjema,
                     slik at du kan velge avreise- og ankomststativer, og vis ruten på kartet.
                     Du må prosessere dataene returnert fra skjemaet slik at det passer med formatet kartet trenger.
                 </p>
@@ -74,7 +73,7 @@ const Task6 = ({stations}) => {
                     Som du ser, så har form-komponentet en funksjon som kjører på <code>onSubmit</code>,
                     nemlig <code>onSubmit</code>.
                     Denne funksjonen får inn resultatet fra formet, når den blir trigget gjennom "Finn reise"-knappen.
-                    Få <em>console.log()</em>-funksjonen på linje 28 til å logge ut avreise- og ankomststativene.
+                    Få <em>console.log()</em>-funksjonen på linje 24 til å logge ut avreise- og ankomststativene.
                 </li>
                 <li>
                     Hent ut <code>lon</code> og <code>lat</code> fra <em>departureStand</em> og <em>arrivalStand</em> og
@@ -86,6 +85,7 @@ const Task6 = ({stations}) => {
             <p className={styles.section}>Hvor skal vi reise?</p>
             <form className={styles.form} id={"routePlanner"} onSubmit={onSubmit}>
                 <Submit form="routePlanner" label={"Finn reise"}/>
+
             </form>
             {route?.routes?.map((element, i) => (
                 <Map key={i}>
