@@ -6,6 +6,7 @@ import Map from "../../config/Map";
 import {Layer, Source} from "react-map-gl";
 import React, { useState} from "react";
 import {getCycleRoute} from "../../api/mapbox";
+import {formatStationsForDropdown} from "../../utils/formatStationsForDropdown";
 
 
 export function isCompleted() {
@@ -13,20 +14,7 @@ export function isCompleted() {
 }
 
 const Task6 = ({stations}) => {
-    let parsedStations = []
-    if(stations.length > 0){
-        parsedStations = JSON.parse(stations)
-    }
-
-
-    const choices = parsedStations.map(e => {
-        return {
-            label: e.name,
-            value: JSON.stringify(e)
-        }
-    })
-
-
+    const choices = formatStationsForDropdown(stations)
     const [route, setRoute] = useState()
 
     const onSubmit = async (e) => {
