@@ -1,5 +1,4 @@
 import TLDR from "../TLDR";
-import DropDown from "../InputFields/DropDown";
 import Submit from "../InputFields/Submit";
 import styles from "../../styles/Tasks.module.css";
 import Map from "../../config/Map";
@@ -62,6 +61,9 @@ const Task6 = ({stations}) => {
             </p>
             <ol className={styles.section}>
                 <li>
+                    Åpne <code>components/tasks/Task6.js</code>
+                </li>
+                <li>
                     Importer <code>DropDown.js</code> og legg til to dropdownlister i <code>form</code>-elementet under.
                     Den ene skal representere <em>avreisestativer</em>,
                     det andre skal representere <em>ankomststativer</em>. Du finner dropdownkomponentet
@@ -70,7 +72,7 @@ const Task6 = ({stations}) => {
                 </li>
                 <li>
                     Som du ser, så har form-komponentet en funksjon som kjører på <code>onSubmit</code>,
-                    nemlig <code>onSubmit></code>.
+                    nemlig <code>onSubmit</code>.
                     Denne funksjonen får inn resultatet fra formet, når den blir trigget gjennom "Finn reise"-knappen.
                     Få <em>console.log()</em>-funksjonen på linje 28 til å logge ut avreise- og ankomststativene.
                 </li>
