@@ -1,90 +1,97 @@
 import TLDR from "../TLDR";
-import styles from "../../styles/Tasks.module.css";
 import DropDown from "../InputFields/DropDown";
-import Image from "next/image";
-export default function Task7({ stations }) {
-  let parsedStations = [];
-  if (stations.length > 0) {
-    parsedStations = JSON.parse(stations);
-  }
+import Submit from "../InputFields/Submit";
+import styles from "../../styles/Tasks.module.css";
+import Map from "../../config/Map";
+import {Layer, Source} from "react-map-gl";
+import React, { useState} from "react";
+import {getCycleRoute} from "../../api/mapbox";
 
-  const choices = parsedStations.map((e) => {
-    return {
-      label: e.name,
-      value: JSON.stringify(e),
-    };
-  });
 
-  return (
-    <div>
-      <TLDR>
-        <p>
-          <b>Kort fortalt: </b>
-          Du skal skrive et kall ved bruk av axios til å hente ut data fra et endepunkt.
-          Du skal hente ut alle tilgjengelige stasjoner fra responsen.
-        </p>
-      </TLDR>
-      <div className={styles.section}>
-        <h4>Axios</h4>
-        <p>
-          Axios er et velkjent bibliotek som brukes for å lage HTTP-forespørsler
-          fra nettleseren via Node og Express.js
-        </p>
-        <p>
-          Ved å bruke axios kan du blant annet gjøre ulike kall som get, post
-          osv.. direkte fra nettleser.
-        </p>
-        <a href={"https://axios-http.com/docs/intro"}>
-          Les mer utdypende om axios
-        </a>
-      </div>
-
-      <div className={styles.section}>
-        <p>
-          Hovedsaklig skal vi fokusere på axios.get(). GET er et HTTP-kall som
-          gjør en spørring til serveren for å få tilgang til data. Du kan blant
-          annet gjøre en forespørsel til en tjeneste eller et endepunkt.
-        </p>
-        <br/>
-        <p>Her et eksempel på hvordan man kan bruke et axios.get()-kall: </p> <br/>
-        <Image
-        src="/images/getRequest.png"
-        width={550}
-        height={200}
-        className={styles.image}
-      />
-      </div>
-
-      <div className={styles.section}>
-        <h4>Oppgavebeskrivelse</h4>
-        <p>I denne oppgaven skal dere skrive et lignende kall.
-        Gå til <code>{`pages/tasks/[nr].js`}</code>. I funksjonen <code>getServerSideProps()</code>
-        vil du finne en TODO til oppgave 7. </p>
-        <br/>
-        <p>
-        Her skal du implementere et GET-kall mot endepunktet
-        <code> https://gbfs.urbansharing.com/bergenbysykkel.no/station_information.json </code> 
-        for å kunne hente ut alle stasjoner.
-        </p>
-        <p>Dette er et eksempel på responsen til kallet: </p>
-        <Image
-        src="/images/stationsResponseExample.png"
-        width={300}
-        height={400}
-        className={styles.image}
-      />
-        <p>
-        Datamanipulering er allerede implementert for deg slik at du kun skal fokusere på å
-        implementere et suksessfullt kall.</p>
-
-        <p>Dersom kallet er korrekt implementert vil du kunne se i dropdown-komponenten en liste over alle stasjoner du har hentet ut.</p>
-      </div>
-
-      <div className={styles.section}>
-        <h4>Resultat</h4>
-      <DropDown choices={choices} label="Tilgjengelig stasjoner"></DropDown>
-
-      </div>
-    </div>
-  );
+export function isCompleted() {
+    return false
 }
+
+const Task6 = ({stations}) => {
+    let parsedStations = []
+    if(stations.length > 0){
+        parsedStations = JSON.parse(stations)
+    }
+
+
+    const choices = parsedStations.map(e => {
+        return {
+            label: e.name,
+            value: JSON.stringify(e)
+        }
+    })
+
+
+    const [route, setRoute] = useState()
+
+    const onSubmit = async (e) => {
+        e.preventDefault();
+        const formData = new FormData(e.target)
+        const formProps = Object.fromEntries(formData)
+
+        const departureStand = JSON.parse(formProps.departureStand)
+        const arrivalStand = JSON.parse(formProps.arrivalStand)
+
+        const geoJson = await getCycleRoute([
+            departureStand.lon,
+            departureStand.lat,
+            arrivalStand.lon,
+            arrivalStand.lat
+        ], {
+            format: "geojson",
+        });
+
+
+        setRoute(geoJson)
+    }
+
+    return (
+        <div>
+            <TLDR>
+                <p>
+                    <b>Kort fortalt: </b>
+                    Bruk elementene du finner i <code>/components/inputFields</code> for å lage et skjema,
+                    slik at du kan velge avreise- og ankomststativer, og vis ruten på kartet.
+                    Du må prosessere dataen med stasjonene slik at de passer med formatet definert i
+                    DropDown-komponentet.
+                </p>
+            </TLDR>
+            <p className={styles.section}>
+                I de to siste oppgavene, jobbet vi med på vise ruten mellom to ulike stativene, og å lage en
+                dropdown-liste
+                med alle de tilgjengelige stativene. I denne oppgaven skal vi koble disse elementene sammen - slik at du
+                kan velge stasjoner fra to lister, og vise ruta mellom de på kartet.
+            </p>
+
+            <form className={styles.form} id={"routePlanner"} onSubmit={onSubmit}>
+                <DropDown choices={choices} selectName={"arrivalStand"} label={"Velg ankomststasjon"}/>
+                <DropDown choices={choices} selectName={"departureStand"} label={"Velg avreisestasjon"}/>
+                <Submit form="routePlanner" label={"Finn reise"}/>
+            </form>
+            <Map>
+                <Source type="geojson" data={route}>
+                    <Layer
+                        type="line"
+                        layout={{
+                            visibility: "visible",
+                            "line-cap": "round",
+                            "line-join": "round",
+                        }}
+                        paint={{
+                            "line-color": "green",
+                            "line-width": 4,
+                            "line-opacity": 0.75,
+                        }}
+                    />
+                </Source>
+            </Map>
+        </div>
+    );
+}
+
+export default Task6
