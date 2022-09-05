@@ -13,13 +13,22 @@ const Map = dynamic(() => import("../config/Map"), {
 export default function Home() {
     return (
         <div className={styles.taskContainer}>
-            <h3>Velkommen til workshop i regi av STACC💪</h3>
+            <h3>Velkommen til workshop i regi av STACC!💪</h3>
             <p>
-                Vi skal i denne workshoppen lære litt om hvordan en bygger en web
-                applikasjon med React, NextJS, Mapbox og Bergen Bysykkel sitt åpne API.
-                Det er ingen krav om forkunnskaper for å delta, bare mor dere og prøv
-                dere frem! Ingen spørsmål er for dumme og vi er her for å hjelpe dere så
-                mye som vi klarer!
+                I denne workshopen skal vi lære litt om hvordan vi
+                <ul>
+                    <li>
+                        👩‍💻 bygger en web-applikasjon med React og NextJs
+                    </li>
+                    <li>
+                        🏃‍ jobber med API-er for å hente data
+                    </li>
+                    <li>
+                        🧭 og visualiserer data på kart med Mapbox
+                    </li>
+                </ul>
+                Vi forventer ingen forkunnskaper om teknologiene nevnt over, vi forventer kun at dere prøver dere frem
+                og spør om dere står fast.
             </p>
             <br/>
             <Map height={"1000px"} width={"1000px"} zoom={14} longitude={5.3339957} latitude={60.3800099}>
