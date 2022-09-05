@@ -5,7 +5,7 @@ import styles from "../../styles/Tasks.module.css";
 import { Marker, Source, Layer } from "react-map-gl";
 
 export default function Task5({ stations }) {
-  const [location, setLocation] = useState({ lat: "", long: "" });
+  const [location, setLocation] = useState({ lat: "", lon: "" });
   const [route, setRoute] = useState([]);
 
   // Bruk denne funksjonen for å finne din lokasjon
@@ -21,10 +21,10 @@ export default function Task5({ stations }) {
     <div>
       <TLDR>
         <p>
-          <b>Kort fortalt: </b> Hent ut din nåværende lokasjon (hint: vi har
-          laget en hjelpefunksjon for dette) og bruk den sammen med liste over
-          stasjoner for å finne den stasjonen som er nærmest deg (Vi har også
-          laget en hjelpefunksjon for dette ;) ). Tegn stasjonen på kartet.
+          <b>Kort fortalt: </b> Hent ut din nåværende lokasjon (
+          <code>/utils/getCurrentLocation</code>) og bruk den sammen med liste
+          over stasjoner for å finne den stasjonen som er nærmest deg (
+          <code>/utils/getClosestStation</code> ). Tegn stasjonen på kartet.
         </p>
       </TLDR>
       <br />
@@ -36,8 +36,15 @@ export default function Task5({ stations }) {
       fullført. Vi er nødt til å bruke asynkrone funksjoner (definert med{" "}
       <code>async function</code>) for å både ut lokasjonen vår. Kan du ta i
       bruk <code>async function getMyLocation</code> i{" "}
-      <code>components/tasks/Task4</code> for å finne din posisjon? Les mer om
-      asynkrone funksjoner her:{" "}
+      <code>components/tasks/Task4</code> for å finne din posisjon?
+      getMyLocation returnerer et "Promise". For å kunne lese verdien i promiset
+      må en bruke .then() etter funksjonskallet. F.eks{" "}
+      <code>
+        getCurrentLocation().then((location) => console.log(location))
+      </code>{" "}
+      vil logge lokasjonen din i nettleser konsollen.
+      <br />
+      Les mer om asynkrone funksjoner her:{" "}
       <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/async_function">
         MDN
       </a>
@@ -55,10 +62,10 @@ export default function Task5({ stations }) {
       <br />
       <br />
       <Map>
-        {/* Kommenter ut koden under for å plassere en markør på kartet */}
-        {/* <Marker longitude={"FYLL INN"} latitude={"FYLL INN"}>
-          <div>Her er du!</div>
-        </Marker> */}
+        {/* Passer kordinat state inn i longitude og latitude under */}
+        <Marker longitude={5.3315857} latitude={60.3809852}>
+          <img src="/stacc_icon_red.png" width={30} height={30} />
+        </Marker>
 
         {/* Kommenter ut koden under for å tegne en rute på kartet */}
         {/* <Source id={`1`} type="geojson" data={route?.routes?.[0]?.geometry}>
