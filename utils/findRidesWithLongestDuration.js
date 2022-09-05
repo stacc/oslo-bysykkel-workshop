@@ -5,9 +5,7 @@
  */
 const findRidesWithLongestDuration = (data) => {
   // TODO - implement properly
-  const longestRides = data.sort((a, b ) => b.distance - a.distance).slice(0, 10)
-  return longestRides
-  // return data.at(0)
+  return data.at(0)
 };
 
 export default findRidesWithLongestDuration;
