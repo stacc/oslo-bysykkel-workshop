@@ -145,9 +145,9 @@ export default function Task3() {
                 etc) og sluttstativet.
                 <br/>
                 <br/>
-                Vi har også lagt til et eget felt som heter <code>distance</code>, dette
+                Når dataen blir hentet ut så legger vi manuelt til en egen property <code>distance</code>, dette
                 er distansen mellom start- og sluttstativet og kan brukes til å estimere
-                distansen som ble syklet.
+                distansen som ble syklet. Du kan se på linje 11 i koden, funksjonen <code>precomputeDistances</code>, som legger til dette feltet.
                 <br/>
                 <br/>
                 I dataen har vi allerede <em>lengdegraden</em> og <em>breddegraden</em> (de
