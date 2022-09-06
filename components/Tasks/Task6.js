@@ -20,21 +20,15 @@ const Task6 = ({stations}) => {
 
         //hent ut verdiene fra dropdownene under
 
-        const departureStand = JSON.parse(formProps.departureStand)
-        const arrivalStand = JSON.parse(formProps.arrivalStand)
-        console.log("➡️departureStand", departureStand, "⬅️arrivalStand", arrivalStand)
+        //const departureStand = JSON.parse(formProps.???)
+        //const arrivalStand = JSON.parse(formProps.???)
+        //console.log("➡️departureStand", departureStand, "⬅️arrivalStand", arrivalStand)
 
         const trip = [
             //avreise
-            {
-                long: departureStand.lon,
-                lat: departureStand.lat
-            },
+            {},
             //ankomst
-            {
-                long: arrivalStand.lon,
-                lat: arrivalStand.lat
-            },
+            {},
         ]
 
         const geoJson = await getCycleRoute(trip, {
@@ -92,8 +86,6 @@ const Task6 = ({stations}) => {
             <p className={styles.section}>Hvor skal vi reise?</p>
             <form className={styles.form} id={"routePlanner"} onSubmit={onSubmit}>
                 {/*Legg til dropdowns her :)*/}
-                <DropDown choices={choices} label={"Avreisestativ"} name={"departureStand"}/>
-                <DropDown choices={choices} label={"Ankomststativ"} name={"arrivalStand"}/>
                 <Submit form="routePlanner" label={"Finn reise"}/>
 
             </form>
