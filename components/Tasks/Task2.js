@@ -18,7 +18,7 @@ export default function Task2() {
         sidene våre til å se bra ut også! Vi skal bruke
         <code>CSS</code> til å gjøre dette. Vi skriver css i filer som slutter
         på
-        <code> .module.css</code>, og du kan se noen eksempler på dette
+        <code> .module.css</code>, og du kan se noen ekscodepler på dette
         allerede i koden.
       </p>
       <Image
@@ -28,17 +28,22 @@ export default function Task2() {
         className={styles.image}
       />
       <p className={styles.section}>
-        Som vi nevnte over, så ønsker vi først og fremst å endre på utseendet til <code>Header</code>{" "}
-        komponenten, men du spør kanskje deg selv, "hva er en komponent?".
-          </p>
-        <p>
-        Komponenter er en måte å bryte opp kode i mindre deler. Dette gjør vi i hovedsak for to grunner;
-            <ul>
-                <li>✨ Det å ikke ha all koden i én fil gjør den lettere å lese</li>
-                <li>✨ Kodebitene kan gjenbrukes, og vi slipper å copy-paste kode </li>
-            </ul>
-            For å gjenbruke koden, må den importeres inn i den filen du jobber i.
-      Komponenter i NextJs blir lagret i en mappe som heter <code>components</code>. Navigerer til
+        Som vi nevnte over, så ønsker vi først og fremst å endre på utseendet
+        til <code>Header</code> komponenten, men du spør kanskje deg selv, "hva
+        er en komponent?".
+      </p>
+      <p>
+        Komponenter er en måte å bryte opp kode i mindre deler. Dette gjør vi i
+        hovedsak for to grunner;
+        <ul>
+          <li>✨ Det å ikke ha all koden i én fil gjør den lettere å lese</li>
+          <li>
+            ✨ Kodebitene kan gjenbrukes, og vi slipper å copy-paste kode{" "}
+          </li>
+        </ul>
+        For å gjenbruke koden, må den importeres inn i den filen du jobber i.
+        Komponenter i NextJs blir lagret i en mappe som heter{" "}
+        <code>components</code>. Navigerer til
         <code> Header</code> komponenten og se om du får til å endre på fargen!
       </p>
     </div>

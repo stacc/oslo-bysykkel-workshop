@@ -3,33 +3,10 @@ import styles from "../../styles/Tasks.module.css";
 import Map from "../../config/Map";
 import { Layer, Source } from "react-map-gl";
 import React, { useEffect, useState } from "react";
-import { getAvailability } from "../../api/bysykkel";
 import Image from "next/image";
 
 const getStationsWithAvailability = async (stations) => {
-  const { data: availabilities } = await getAvailability();
-  const availabilityDictionary = availabilities.stations.reduce(
-    (dict, availability) => {
-      if (availability.station_id in dict)
-        throw Error(
-          "More than one station id in dictionary, uniqueness invariant does not hold."
-        );
-      dict[availability.station_id] = availability;
-      return dict;
-    },
-    {}
-  );
-  return stations.reduce((dict, station) => {
-    if (station.station_id in dict)
-      throw Error(
-        "More than one station id in dictionary, uniqueness invariant does not hold."
-      );
-    dict[station.station_id] = {
-      ...station,
-      availability: availabilityDictionary[station.station_id],
-    };
-    return dict;
-  }, {});
+  // TODO: Implement
 };
 
 const createGeoJson = (stations) => {

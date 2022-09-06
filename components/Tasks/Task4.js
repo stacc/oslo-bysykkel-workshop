@@ -2,31 +2,29 @@ import {useState} from "react";
 import Map from "../../config/Map";
 import TLDR from "../TLDR";
 import styles from "../../styles/Tasks.module.css";
-import {Marker, Source, Layer} from "react-map-gl";
+import { Marker, Source, Layer } from "react-map-gl";
 
-export default function Task5({stations}) {
-    const [location, setLocation] = useState({lat: "", long: ""});
-    const [route, setRoute] = useState([]);
+export default function Task5({ stations }) {
+  const [location, setLocation] = useState({ lat: "", long: "" });
+  const [route, setRoute] = useState([]);
 
-    // Bruk denne funksjonen for å finne din lokasjon
-    async function getMyLocation() {
-    }
+  // Bruk denne funksjonen for å finne din lokasjon
+  async function getMyLocation() {}
 
-    // Sett den nærmeste stasjonen på denne variabelen
-    const closestStation = "???";
+  // Sett den nærmeste stasjonen på denne variabelen
+  const closestStation = "???";
 
-    // Bruk denne funksjonen for å finne en rute mellom to stasjoner
-    async function getRoute() {
-    }
+  // Bruk denne funksjonen for å finne en rute mellom to stasjoner
+  async function getRoute() {}
 
     return (
         <div>
             <TLDR>
                 <p>
-                    <b>Kort fortalt: </b> Hent ut din nåværende plassering (hint: vi har
-                    laget en hjelpefunksjon for dette) og bruk den sammen med lista over
-                    stasjonene for å finne den stasjonen som er nærmest deg (Vi har også
-                    laget en hjelpefunksjon for dette ;) ). Tegn stasjonen på kartet.
+                    <b>Kort fortalt: </b> Hent ut din nåværende lokasjon (
+                    <code>/utils/getCurrentLocation</code>) og bruk den sammen med liste
+                    over stasjoner for å finne den stasjonen som er nærmest deg (
+                    <code>/utils/getClosestStation</code> ). Tegn stasjonen på kartet.
                 </p>
             </TLDR>
             <br/>
@@ -81,10 +79,10 @@ export default function Task5({stations}) {
             <br/>
             <br/>
             <Map>
-                {/* Kommenter ut koden under for å plassere en markør på kartet */}
-                {/* <Marker longitude={"FYLL INN"} latitude={"FYLL INN"}>
-          <div>Her er du!</div>
-        </Marker> */}
+                {/* Passer kordinat state inn i longitude og latitude under */}
+                <Marker longitude={5.3315857} latitude={60.3809852}>
+                    <img src="/stacc_icon_red.png" width={30} height={30} />
+                </Marker>
 
                 {/* Kommenter ut koden under for å tegne en rute på kartet */}
                 {/* <Source id={`1`} type="geojson" data={route?.routes?.[0]?.geometry}>
