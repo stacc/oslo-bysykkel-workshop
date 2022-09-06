@@ -1,3 +1,4 @@
+import Task0 from "./Task0";
 import Task1 from "./Task1";
 import Task2 from "./Task2";
 import Task3, { isCompleted as isTask3Completed } from "./Task3";
@@ -8,6 +9,12 @@ import Task7 from "./Task7";
 import TaskX from "./TaskX";
 
 export const getTasks = (props = {}) => [
+  {
+    id: 0,
+    title: "0. Installasjon",
+    Component: <Task0 {...props} />,
+    description: "Installerer de nødvendige verktøyene.",
+  },
   {
     id: 1,
     title: "1. Kom i gang med NextJS",

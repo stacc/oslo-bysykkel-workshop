@@ -27,5 +27,3 @@ jspm_packages
 yarn.lock
 
 package.lock
-
-.env.local

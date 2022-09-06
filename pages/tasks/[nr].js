@@ -13,7 +13,7 @@ export default function Tasks({ nr, tasksLength, stations }) {
       <div>
         <div className={styles.taskContainer}>{task.Component} </div>
         <div className={styles.buttonContainer}>
-          {nr !== 1 && (
+          {nr > 1 && (
             <Link href={`/tasks/${nr - 1}`} passHref>
               <a className={styles.button}>Forrige oppgave</a>
             </Link>
@@ -40,7 +40,7 @@ export async function getServerSideProps({ params }) {
   const tasksLength = tasks.length;
   const nr = parseInt(params.nr);
   let stations = [];
-  if (nr === 3 || nr === 5 ||nr === 6 || nr === 7) {
+  if (nr === 3 || nr === 5 || nr === 6 || nr === 7) {
     const res = await axios.get(
       "https://gbfs.urbansharing.com/bergenbysykkel.no/station_information.json"
     );

@@ -18,8 +18,8 @@ export default function Task2() {
         sidene våre til å se bra ut også! Vi skal bruke
         <code>CSS</code> til å gjøre dette. Vi skriver css i filer som slutter
         på
-        <code> .module.css</code>, og du kan se noen ekscodepler på dette
-        allerede i koden.
+        <code> .module.css</code>, og du kan se noen eksempler på dette allerede
+        i koden.
       </p>
       <Image
         src="/images/components.png"
