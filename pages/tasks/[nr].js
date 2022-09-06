@@ -40,16 +40,11 @@ export async function getServerSideProps({ params }) {
   const tasksLength = tasks.length;
   const nr = parseInt(params.nr);
   let stations = [];
-  if (nr === 3 || nr === 5 || nr === 6 || nr === 7) {
-    const res = await axios.get(
-      "https://gbfs.urbansharing.com/bergenbysykkel.no/station_information.json"
-    );
-    stations = JSON.stringify(res.data.data.stations);
-  }
-
+  
   /**Oppgave 5: Vis tilgjengelig stasjoner */
-  if (params.nr === "5" || params.nr === "6") {
+  if (nr === 3 || nr === 5 || nr === 6 || nr === 7) {
     //TODO: Her skal du skrive et GET-kall og returnere korrekt data.
+    
   }
 
   return {
