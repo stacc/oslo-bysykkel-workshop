@@ -13,7 +13,7 @@ export default function Home() {
   return (
     <div className={styles.taskContainer}>
       <h3>Velkommen til workshop i regi av STACC!💪</h3>
-      <p>
+      <div>
         I denne workshopen skal vi lære litt om hvordan vi
         <ul>
           <li>👩‍💻 bygger en web-applikasjon med React og NextJs</li>
@@ -22,7 +22,7 @@ export default function Home() {
         </ul>
         Vi forventer ingen forkunnskaper om teknologiene nevnt over, vi
         forventer kun at dere prøver dere frem og spør om dere står fast.
-      </p>
+      </div>
       <br />
       <Map
         height={"1000px"}
