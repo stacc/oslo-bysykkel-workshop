@@ -7,18 +7,15 @@ import getCurrentLocation from "../../utils/getCurrentLocation";
 import getClosestStation from "../../utils/getClosestStation";
 import { getPedestrianRoute } from "../../api/mapbox";
 
-export default function Task5({ stations }) {
-  const [location, setLocation] = useState({ lat: "", long: "" });
+export default function Task4({ stations = [] }) {
+  const [location, setLocation] = useState({ lat: "", lon: "" });
   const [route, setRoute] = useState([]);
-
-  // Bruk denne variabelen for å sende inn stations
-  const parsedStations = stations.length != 0 && JSON.parse(stations);
 
   // Bruk denne funksjonen for å finne din lokasjon
   async function getMyLocation() {}
 
   // Sett den nærmeste stasjonen på denne variabelen
-  const closestStation = "";
+  const closestStation = stations?.[0];
 
   // Bruk denne funksjonen for å finne en rute mellom to stasjoner
   // Valgfri oppgave!!

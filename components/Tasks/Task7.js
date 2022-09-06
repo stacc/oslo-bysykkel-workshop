@@ -32,19 +32,12 @@ const createGeoJson = (stations) => {
 };
 
 const Task7 = ({ stations }) => {
-  let parsedStations = [];
-  if (stations.length > 0) {
-    parsedStations = JSON.parse(stations);
-  }
-
   const [stationsWithAvailability, setStationsWithAvailability] =
     useState(null);
 
   useEffect(() => {
     const updateAvailability = async () => {
-      setStationsWithAvailability(
-        await getStationsWithAvailability(parsedStations)
-      );
+      setStationsWithAvailability(await getStationsWithAvailability(stations));
     };
     updateAvailability();
     let intervalId = setInterval(() => {

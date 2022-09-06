@@ -5,7 +5,8 @@
  */
 const findRidesWithLongestDuration = (data) => {
   // TODO - implement properly
-  return data.at(0)
+  // Se på sort funksjonen i javascript her: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort
+  return data.at(0);
 };
 
 export default findRidesWithLongestDuration;

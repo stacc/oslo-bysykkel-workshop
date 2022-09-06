@@ -15,9 +15,8 @@ export default function Task2() {
       <br />
       <p>
         Nå som vi kan opprette sider og hente data til disse, bør vi faktisk få
-        sidene våre til å se bra ut også! Vi skal bruke
-        <code>CSS</code> til å gjøre dette. Vi skriver css i filer som slutter
-        på
+        sidene våre til å se bra ut også! Vi skal bruke <code>CSS</code> til å
+        gjøre dette. Vi skriver css i filer som slutter på
         <code> .module.css</code>, og du kan se noen eksempler på dette allerede
         i koden.
       </p>
