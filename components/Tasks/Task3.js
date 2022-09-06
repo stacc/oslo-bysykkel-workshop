@@ -154,12 +154,11 @@ export default function Task3() {
         <br />I dataen har vi allerede <em>lengdegraden</em> og{" "}
         <em>breddegraden</em> (de geografiske koordinatene).
         <br />
-        <br />
-        På toppen av denne siden (linje 92 i koden) finner du et kart som kan
-        brukes til å vise reisen. I denne filen finner du også koden som tar ti
-        av turene og beregner korteste sykkeldistanse mellom start- og
-        sluttstoppet, og viser det på kartet. Men, det mangler beregning på
-        hvordan man hente ut den lengste turen. <em>Fikser du det? </em>
+        <br />I filen <code>findRideWithLongestDuration.js</code> skal du
+        implementere funksjonen for å beregne topp ti lengste sykkeldistanse
+        mellom start- og sluttstoppet, slik at det vises på kartet dersom det
+        implementeres korrekt.
+        <em>Fikser du det? </em>
         <br />
         <br />
       </div>
