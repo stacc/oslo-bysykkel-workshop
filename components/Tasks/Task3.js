@@ -22,26 +22,6 @@ const precomputeDistances = (data) => {
 
 let precomputedBysykkelJson = precomputeDistances(bysykkelJson);
 
-export function isCompleted() {
-  const longestDuration = bysykkelJson
-    .map((x) => x.duration)
-    .sort((a, b) => b - a)
-    .slice(0, 10);
-  let rides = findRidesWithLongestDuration(precomputedBysykkelJson);
-  if (!rides?.length) {
-    rides = [rides];
-  }
-
-  try {
-    // Ensure the rides are valid
-    rides.map((x) => getRouteFromRide(x));
-  } catch (e) {
-    return false;
-  }
-
-  return rides.every((ride, i) => ride.duration === longestDuration[i]);
-}
-
 export default function Task3() {
   const [routes, setRoutes] = useState([]);
 

@@ -1,36 +1,31 @@
 import Link from "next/link";
-import TaskCompleted from "../../components/TaskCompleted";
 import { getTasks } from "../../components/Tasks";
 import styles from "../../styles/Tasks.module.css";
 import axios from "axios";
 
 export default function Tasks({ nr, tasksLength, stations }) {
   const task = getTasks({ stations }).find((task) => task.id === nr);
-  const isCompleted =
-    typeof task.isCompleted === "function" ? task.isCompleted() : 0;
   return (
-    <TaskCompleted isCompleted={isCompleted}>
-      <div>
-        <div className={styles.taskContainer}>{task.Component} </div>
-        <div className={styles.buttonContainer}>
-          {nr > 1 && (
-            <Link href={`/tasks/${nr - 1}`} passHref>
-              <a className={styles.button}>Forrige oppgave</a>
-            </Link>
-          )}
-          {nr === 1 && (
-            <Link href={`/`} passHref>
-              <a className={styles.button}>Til oppgaveoversikten</a>
-            </Link>
-          )}
-          {nr !== tasksLength && (
-            <Link href={`/tasks/${nr + 1}`} passHref>
-              <a className={styles.button}>Neste oppgave</a>
-            </Link>
-          )}
-        </div>
+    <div>
+      <div className={styles.taskContainer}>{task.Component} </div>
+      <div className={styles.buttonContainer}>
+        {nr > 1 && (
+          <Link href={`/tasks/${nr - 1}`} passHref>
+            <a className={styles.button}>Forrige oppgave</a>
+          </Link>
+        )}
+        {nr === 1 && (
+          <Link href={`/`} passHref>
+            <a className={styles.button}>Til oppgaveoversikten</a>
+          </Link>
+        )}
+        {nr !== tasksLength && (
+          <Link href={`/tasks/${nr + 1}`} passHref>
+            <a className={styles.button}>Neste oppgave</a>
+          </Link>
+        )}
       </div>
-    </TaskCompleted>
+    </div>
   );
 }
 
