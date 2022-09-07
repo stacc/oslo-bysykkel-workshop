@@ -110,19 +110,6 @@ export default function Task5({ stations = [] }) {
         </Source> */}
       </Map>
       <br />
-      <TLDR>
-        <ul className={styles.list}>
-          <li>
-            <b>Valgfrie oppgaver:</b>
-          </li>
-          <li>
-            1. Bruke hjelpefunksjonen <code>getPedestrianRoute</code> i{" "}
-            <code>/api/mapbox.js</code> for å tegne den raskeste ruten mellom
-            deg og stasjonen du er nærmest.
-          </li>
-          <li>2. Lag din egen markør som du kan plassere på kartet.</li>
-        </ul>
-      </TLDR>
     </div>
   );
 }

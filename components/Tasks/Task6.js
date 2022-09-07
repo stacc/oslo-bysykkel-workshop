@@ -142,21 +142,6 @@ export default function Task6() {
         <br />
         <br />
       </div>
-
-      <TLDR>
-        <div className={styles.list}>
-          <b>Valgfrie oppgaver:</b>
-          <div>
-            1. Prøv å endre datasettet som er brukt ved å endre import i toppen
-            av <code>components/Tasks/Task3.js</code> og se om det påvirker
-            turen.
-          </div>
-          <div>
-            2. Prøv å legge til støtte for å hente ut de top 10 lengste turene
-          </div>
-          <div>3. Prøv å finne ut hva som er dei 10 mest populære turene.</div>
-        </div>
-      </TLDR>
     </div>
   );
 }
