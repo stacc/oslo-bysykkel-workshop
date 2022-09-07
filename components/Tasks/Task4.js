@@ -1,128 +1,110 @@
-import { useState } from "react";
-import Map from "../../config/Map";
 import TLDR from "../TLDR";
+import Submit from "../InputFields/Submit";
 import styles from "../../styles/Tasks.module.css";
-import { Marker, Source, Layer } from "react-map-gl";
-import getCurrentLocation from "../../utils/getCurrentLocation";
-import getClosestStation from "../../utils/getClosestStation";
-import { getPedestrianRoute } from "../../api/mapbox";
+import Map from "../../config/Map";
+import {Layer, Source} from "react-map-gl";
+import React, {useState} from "react";
+import {getCycleRoute} from "../../api/mapbox";
+import {formatStationsForDropdown} from "../../utils/formatStationsForDropdown";
+import DropDown from "../InputFields/DropDown";
 
-export default function Task4({ stations = [] }) {
-  const [location, setLocation] = useState({ lat: "", lon: "" });
-  const [route, setRoute] = useState([]);
+const Task4 = ({stations}) => {
+    const choices = formatStationsForDropdown(stations)
+    const [route, setRoute] = useState()
 
-  // Bruk denne funksjonen for å finne din lokasjon
-  async function getMyLocation() {}
+    const onSubmit = async (dataFromForm) => {
+        //Her prosesseres dataen slik at den kan brukes
+        dataFromForm.preventDefault();
+        const formData = new FormData(dataFromForm.target)
+        const formProps = Object.fromEntries(formData)
 
-  // Sett den nærmeste stasjonen på denne variabelen
-  const closestStation = stations?.[0];
+        //hent ut verdiene fra dropdownene under
 
-  // Bruk denne funksjonen for å finne en rute mellom to stasjoner
-  // Valgfri oppgave!!
-  async function getRoute() {}
+        //const departureStand = JSON.parse(formProps.???)
+        //const arrivalStand = JSON.parse(formProps.???)
+        //console.log("➡️departureStand", departureStand, "⬅️arrivalStand", arrivalStand)
 
-  return (
-    <div>
-      <TLDR>
-        <p>
-          <b>Kort fortalt: </b> Hent ut din nåværende lokasjon (
-          <code>/utils/getCurrentLocation</code>) og bruk den sammen med liste
-          over stasjoner for å finne den stasjonen som er nærmest deg (
-          <code>/utils/getClosestStation</code> ). Tegn stasjonen på kartet.
-        </p>
-      </TLDR>
-      <button type="button" onClick={getMyLocation}>
-        Hent min lokasjon!
-      </button>
-      <br />
-      <br />
-      <b>Asynkrone funksjoner: </b>
-      <br />
-      Asynkronitet betyr at to eller flere ting (f.eks. API-kall) ikke utføres
-      samtidig. Dette er en viktig del av programmering, som vi bruker for å
-      kunne håndtere situasjoner der man ikke på forhånd vet hvor lang tid noe
-      tar. For eksempel, om man skal hente data fra et endepunkt, så vet man
-      aldri hvor lang tid det tar før man får dataene man har spurt om.
-      <br />
-      <br />I slike tilfeller er vi nødt til å definere i koden hvilken
-      oppførsel vi ønsker oss. Her kommer ✨<em>asynkrone funksjoner</em>✨ inn.
-      Disse er definert med <code>async function</code>. Når man skal bruke en
-      asynkron funksjon, må man <em>vente</em> på at den skal bli ferdig før man
-      går videre. Dette gjøres ved å bruke <code>then</code>, slik:{" "}
-      <code>getSomeDataThatYouHaveToWaitFor().then(setState)</code>
-      <br />
-      <br />
-      For å hente ut plasseringen vår, må vi gjøre et slikt kall der vi ikke vet
-      på forhånd hvor lang tid det kommer til å ta.
-      <br />
-      <br />
-      <em>
-        Ta i bruk <code>async function getMyLocation</code> i{" "}
-        <code>components/tasks/Task4</code> for å finne din posisjon.
-      </em>{" "}
-      Les mer om asynkrone funksjoner her:{" "}
-      <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/async_function">
-        MDN
-      </a>
-      <br />
-      <br />
-      <b>useState: </b>
-      <br />
-      useState er en hook (en form for funksjon) som hører med rammeverket
-      React. useState tillater oss å lagre data som kan muteres (oppdateres)
-      helt til du forlater siden eller refresher.
-      <br />
-      <br />
-      <code>const [theValue, setTheValue] = useState(someInitialValue)</code>
-      <br />
-      <br />
-      useState gir oss to metoder, en som holder verdien (<code>theValue</code>)
-      og en som setter verdien (<code>setTheValue</code>). I parantesen på
-      slutten finner du verdien som verdien blir initialisert med.
-      <br />
-      <br />
-      Vi har i denne oppgaven definert to useState funksjoner som du kan bruke
-      til å lagre din lokasjon og ruten til stasjonen.
-      <br />
-      <br />
-      <Map>
-        {/* Passer kordinat state inn i longitude og latitude under */}
-        <Marker longitude={5.3315857} latitude={60.3809852}>
-          <img src="/stacc_icon_red.png" width={30} height={30} />
-        </Marker>
+        const trip = [
+            //avreise
+            {},
+            //ankomst
+            {},
+        ]
 
-        {/* Kommenter ut koden under for å tegne en rute på kartet */}
-        {/* Valgfri oppgave!! */}
-        {/* <Source id={`1`} type="geojson" data={route?.routes?.[0]?.geometry}>
-          <Layer
-            type="line"
-            layout={{
-              visibility: "visible",
-              "line-cap": "round",
-              "line-join": "round",
-            }}
-            paint={{
-              "line-color": `rgb(174, 54, 44)`,
-              "line-width": 4,
-              "line-opacity": 1,
-            }}
-          />
-        </Source> */}
-      </Map>
-      <br />
-      <TLDR>
-        <ul className={styles.list}>
-          <li>
-            <b>Valgfrie oppgaver:</b>
-          </li>
-          <li>
-            1. Bruke hjelpefunksjonen <code>getPedestrianRoute</code> i{" "}
-            <code>/api/mapbox.js</code> for å tegne den raskeste ruten mellom
-            deg og stasjonen du er nærmest.
-          </li>
-          <li>2. Lag din egen markør som du kan plassere på kartet.</li>
-        </ul>
-      </TLDR>
-    </div>
-  );
+        const geoJson = await getCycleRoute(trip, {
+            format: "geojson",
+        });
+        setRoute(geoJson)
+    }
+
+    return (
+        <div>
+            <TLDR>
+                <p>
+                    <b>Kort fortalt: </b>
+                    Bruk elementene du finner i <code>/components/InputFields</code> for å lage et skjema,
+                    slik at du kan velge avreise- og ankomststativer, og vis ruten på kartet.
+                    Du må prosessere dataene returnert fra skjemaet slik at det passer med formatet kartet trenger.
+                </p>
+            </TLDR>
+            <p className={styles.section}>
+                I oppgave 3 og oppgave 5, jobbet vi med på vise ruten mellom to ulike stativene, og å lage en
+                dropdown-liste
+                med alle de tilgjengelige stativene. I denne oppgaven skal vi koble disse elementene sammen - slik at du
+                kan velge stasjoner fra to lister, og vise ruta mellom de på kartet.
+            </p>
+            <p className={styles.section}>
+                For å vise ruta på kartet, må vi vite hvor vi skal fra, og hvor vi skal til. Vi
+                bruker <code>geoJson</code>
+                og <code>getCycleRoute</code> som vi har brukt tidligere, og henter input fra bruker gjennom
+                dropdown-komponenter.
+            </p>
+            <ol className={styles.section}>
+                <li>
+                    Åpne <code>components/tasks/Task6.js</code>
+                </li>
+                <li>
+                    Importer <code>DropDown.js</code> og legg til to dropdownlister i <code>form</code>-elementet under.
+                    Den ene skal representere <em>avreisestativer</em>,
+                    det andre skal representere <em>ankomststativer</em>. Du finner dropdownkomponentet
+                    i <code>/components/inputFields/</code>. Kikk på hva dropdown-komponentet
+                    trenger for å fungere, og pass på å få det med som props.
+                </li>
+                <li>
+                    Som du ser, så har form-komponentet en funksjon som kjører på <code>onSubmit</code>,
+                    nemlig <code>onSubmit</code>.
+                    Denne funksjonen får inn resultatet fra formet, når den blir trigget gjennom "Finn reise"-knappen.
+                    Få <em>console.log()</em>-funksjonen på linje 24 til å logge ut avreise- og ankomststativene.
+                </li>
+                <li>
+                    Hent ut <code>lon</code> og <code>lat</code> fra <em>departureStand</em> og <em>arrivalStand</em> og
+                    fyll dem inn i <em>trip</em>-lista. Her trenger vi to objekter; et for avreise, og et for ankomst.
+                    Objektene skal ha to <em>key-value</em>-par, med key: <code>long</code> og <code>lat</code>.
+                </li>
+            </ol>
+
+            <p className={styles.section}>Hvor skal vi reise?</p>
+            <form className={styles.form} id={"routePlanner"} onSubmit={onSubmit}>
+                {/*Legg til dropdowns her :)*/}
+                <Submit form="routePlanner" label={"Finn reise"}/>
+
+            </form>
+            {route?.routes?.map((element, i) => (
+                <Map key={i}>
+                    <Source type="geojson" data={element?.geometry}>
+                        <Layer
+                            type="line"
+                            paint={{
+                                "line-color": "pink",
+                                "line-width": 2,
+                            }}
+                        />
+                    </Source>
+                </Map>
+            ))
+            }
+        </div>
+    );
 }
+
+export default Task4

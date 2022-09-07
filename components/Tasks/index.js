@@ -31,29 +31,29 @@ export const getTasks = (props = {}) => [
   },
   {
     id: 3,
-    title: "3. Praktisk bruk av JSON data",
+    title: "3. Vis tilgjengelige stasjoner",
     Component: <Task3 {...props} />,
-    description:
-      "Vi fortsetter med å se litt hvordan bysykkel sin historiske JSON data ser ut og hvordan vi kan bruke det til å visualisere turen som har vart legnst.",
-  },
-  {
-    id: 4,
-    title: "4. Hvor er vi?!",
-    Component: <Task4 {...props} />,
-    description:
-      "Vi ønsker nå å finne ut hvor vi er, og hvor det nærmeste bysykkelstativet er.",
-  },
-  {
-    id: 5,
-    title: "5. Vis tilgjengelige stasjoner",
-    Component: <Task5 {...props} />,
     description: "Gjøre et kall mot endepunkt for å hente ut sykkel stasjoner",
   },
   {
-    id: 6,
-    title: "6. Fra hit til dit",
-    Component: <Task6 {...props} />,
+    id: 4,
+    title: "4. Fra hit til dit",
+    Component: <Task4 {...props} />,
     description: "Vis en rute på kartet fra en valgfri stasjon til en annen",
+  },
+  {
+    id: 5,
+    title: "5. Hvor er vi?!",
+    Component: <Task5 {...props} />,
+    description:
+        "Vi ønsker nå å finne ut hvor vi er, og hvor det nærmeste bysykkelstativet er.",
+  },
+  {
+    id: 6,
+    title: "6. Praktisk bruk av JSON data",
+    Component: <Task6 {...props} />,
+    description:
+      "Vi fortsetter med å se litt hvordan bysykkel sin historiske JSON data ser ut og hvordan vi kan bruke det til å visualisere turen som har vart legnst.",
   },
   {
     id: 7,

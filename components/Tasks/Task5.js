@@ -1,85 +1,128 @@
+import { useState } from "react";
+import Map from "../../config/Map";
 import TLDR from "../TLDR";
 import styles from "../../styles/Tasks.module.css";
-import DropDown from "../InputFields/DropDown";
-import Image from "next/image";
-import {formatStationsForDropdown} from "../../utils/formatStationsForDropdown";
+import { Marker, Source, Layer } from "react-map-gl";
+import getCurrentLocation from "../../utils/getCurrentLocation";
+import getClosestStation from "../../utils/getClosestStation";
+import { getPedestrianRoute } from "../../api/mapbox";
 
-export default function Task5({stations}) {
-    const choices = formatStationsForDropdown(stations)
+export default function Task5({ stations = [] }) {
+  const [location, setLocation] = useState({ lat: "", lon: "" });
+  const [route, setRoute] = useState([]);
 
-    return (
-        <div>
-            <TLDR>
-                <p>
-                    <b>Kort fortalt: </b>
-                    Du skal skrive et kall ved bruk av axios for å hente ut alle stasjoner fra Bysykkel sitt endepunkt
-                    slik at dropdown-komponentet fylles.
-                </p>
-            </TLDR>
-            <div className={styles.section}>
-                <h4>Axios</h4>
-                <p>
-                    Axios er et mye brukt bibliotek som brukes for å lage HTTP-forespørsler
-                    fra nettleseren via Node og Express.js
-                </p>
-                <p>
-                    Ved å bruke axios kan du blant annet gjøre ulike kall som GET, POST
-                    osv.. direkte fra nettleser.
-                </p>
-                <a href={"https://axios-http.com/docs/intro"}>
-                    Les mer utdypende om axios
-                </a>
-            </div>
+  // Bruk denne funksjonen for å finne din lokasjon
+  async function getMyLocation() {}
 
-            <div className={styles.section}>
-                <p>
-                    Hovedsaklig skal vi fokusere på axios.get(). GET er et HTTP-kall som
-                    gjør en spørring til serveren for å få tilgang til data. Du kan blant
-                    annet gjøre en forespørsel til en tjeneste eller et endepunkt.
-                </p>
-                <br/>
-                <p>Her et eksempel på hvordan man kan bruke et axios.get()-kall: </p> <br/>
-                <Image
-                    src="/images/getRequest.png"
-                    width={550}
-                    height={200}
-                    className={styles.image}
-                />
-                <p>Legg merke til <code>await</code> som er plassert før <code>axios.get</code>, som vi var innom i en
-                    tidligere oppgave.</p>
-            </div>
+  // Sett den nærmeste stasjonen på denne variabelen
+  const closestStation = stations?.[0];
 
-            <div className={styles.section}>
-                <h4>Oppgavebeskrivelse</h4>
-                <p>I denne oppgaven skal dere skrive et API-kall.
-                    Gå til <code>{`pages/tasks/[nr].js`}</code>. I funksjonen <code>getServerSideProps()</code>
-                    vil du finne en TODO til oppgave 5. </p>
-                <br/>
-                <p>
-                    Her skal du implementere et GET-kall mot endepunktet
-                    <code> https://gbfs.urbansharing.com/bergenbysykkel.no/station_information.json </code>
-                    for å kunne hente ut alle stasjoner.
-                </p>
-                <p>Dette er et eksempel på responsen til kallet: </p>
-                <Image
-                    src="/images/stationsResponseExample.png"
-                    width={300}
-                    height={400}
-                    className={styles.image}
-                />
-                <p>
-                    Man må ofte endre litt på data man henter fra endepunkt, for å få det til å passe med det
-                    prosjektet/applikasjonen man jobber med. I dette tilfellet må vi også det, men det har vi tatt oss av allerde. 😎</p>
+  // Bruk denne funksjonen for å finne en rute mellom to stasjoner
+  // Valgfri oppgave!!
+  async function getRoute() {}
 
-                <p>Dersom kallet er korrekt implementert vil du kunne se en liste over alle
-                    stasjoner til Bergen Bysykkel i dropdown-komponentet under.</p>
-            </div>
+  return (
+    <div>
+      <TLDR>
+        <p>
+          <b>Kort fortalt: </b> Hent ut din nåværende lokasjon (
+          <code>/utils/getCurrentLocation</code>) og bruk den sammen med liste
+          over stasjoner for å finne den stasjonen som er nærmest deg (
+          <code>/utils/getClosestStation</code> ). Tegn stasjonen på kartet.
+        </p>
+      </TLDR>
+      <button type="button" onClick={getMyLocation}>
+        Hent min lokasjon!
+      </button>
+      <br />
+      <br />
+      <b>Asynkrone funksjoner: </b>
+      <br />
+      Asynkronitet betyr at to eller flere ting (f.eks. API-kall) ikke utføres
+      samtidig. Dette er en viktig del av programmering, som vi bruker for å
+      kunne håndtere situasjoner der man ikke på forhånd vet hvor lang tid noe
+      tar. For eksempel, om man skal hente data fra et endepunkt, så vet man
+      aldri hvor lang tid det tar før man får dataene man har spurt om.
+      <br />
+      <br />I slike tilfeller er vi nødt til å definere i koden hvilken
+      oppførsel vi ønsker oss. Her kommer ✨<em>asynkrone funksjoner</em>✨ inn.
+      Disse er definert med <code>async function</code>. Når man skal bruke en
+      asynkron funksjon, må man <em>vente</em> på at den skal bli ferdig før man
+      går videre. Dette gjøres ved å bruke <code>then</code>, slik:{" "}
+      <code>getSomeDataThatYouHaveToWaitFor().then(setState)</code>
+      <br />
+      <br />
+      For å hente ut plasseringen vår, må vi gjøre et slikt kall der vi ikke vet
+      på forhånd hvor lang tid det kommer til å ta.
+      <br />
+      <br />
+      <em>
+        Ta i bruk <code>async function getMyLocation</code> i{" "}
+        <code>components/tasks/Task4</code> for å finne din posisjon.
+      </em>{" "}
+      Les mer om asynkrone funksjoner her:{" "}
+      <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/async_function">
+        MDN
+      </a>
+      <br />
+      <br />
+      <b>useState: </b>
+      <br />
+      useState er en hook (en form for funksjon) som hører med rammeverket
+      React. useState tillater oss å lagre data som kan muteres (oppdateres)
+      helt til du forlater siden eller refresher.
+      <br />
+      <br />
+      <code>const [theValue, setTheValue] = useState(someInitialValue)</code>
+      <br />
+      <br />
+      useState gir oss to metoder, en som holder verdien (<code>theValue</code>)
+      og en som setter verdien (<code>setTheValue</code>). I parantesen på
+      slutten finner du verdien som verdien blir initialisert med.
+      <br />
+      <br />
+      Vi har i denne oppgaven definert to useState funksjoner som du kan bruke
+      til å lagre din lokasjon og ruten til stasjonen.
+      <br />
+      <br />
+      <Map>
+        {/* Passer kordinat state inn i longitude og latitude under */}
+        <Marker longitude={5.3315857} latitude={60.3809852}>
+          <img src="/stacc_icon_red.png" width={30} height={30} />
+        </Marker>
 
-            <div className={styles.section}>
-                <h4>Resultat</h4>
-                <DropDown choices={choices} label="Tilgjengelig stasjoner"/>
-
-            </div>
-        </div>
-    );
+        {/* Kommenter ut koden under for å tegne en rute på kartet */}
+        {/* Valgfri oppgave!! */}
+        {/* <Source id={`1`} type="geojson" data={route?.routes?.[0]?.geometry}>
+          <Layer
+            type="line"
+            layout={{
+              visibility: "visible",
+              "line-cap": "round",
+              "line-join": "round",
+            }}
+            paint={{
+              "line-color": `rgb(174, 54, 44)`,
+              "line-width": 4,
+              "line-opacity": 1,
+            }}
+          />
+        </Source> */}
+      </Map>
+      <br />
+      <TLDR>
+        <ul className={styles.list}>
+          <li>
+            <b>Valgfrie oppgaver:</b>
+          </li>
+          <li>
+            1. Bruke hjelpefunksjonen <code>getPedestrianRoute</code> i{" "}
+            <code>/api/mapbox.js</code> for å tegne den raskeste ruten mellom
+            deg og stasjonen du er nærmest.
+          </li>
+          <li>2. Lag din egen markør som du kan plassere på kartet.</li>
+        </ul>
+      </TLDR>
+    </div>
+  );
 }
