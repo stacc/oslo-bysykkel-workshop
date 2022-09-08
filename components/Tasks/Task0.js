@@ -17,16 +17,16 @@ export default function Task0() {
         </li>
         <ul>
           <li>
-            <b>⭐</b> Last ned, og åpne installasjonsprogrammet. Følg
+            <b>🌺</b> Last ned, og åpne installasjonsprogrammet. Følg
             instruksjonene og sørg for at du installerer den lokalt på pc'en,
             dvs ikke i onedrive eller lignende skylagrings plasseringer.
           </li>
           <li>
-            <b>⭐</b> Husk å åpne og lukke terminalen etterpå for å få oppdatert
+            <b>🌺</b> Husk å åpne og lukke terminalen etterpå for å få oppdatert
             path variables
           </li>
           <li>
-            <b>⭐</b> Sjekk installasjonen: - <code>node -v</code>, deretter{" "}
+            <b>🌺</b> Sjekk installasjonen: - <code>node -v</code>, deretter{" "}
             <code>npm -v</code>
           </li>
         </ul>
@@ -35,7 +35,7 @@ export default function Task0() {
         </li>{" "}
         <ul>
           <li>
-            <b>⭐</b> sjekk installasjon: <code>git version</code>
+            <b>🌺</b> sjekk installasjon: <code>git version</code>
           </li>
         </ul>
         <li>
@@ -43,7 +43,7 @@ export default function Task0() {
         </li>{" "}
         <ul>
           <li>
-            <b>⭐</b> Gjerne{" "}
+            <b>🌺</b> Gjerne{" "}
             <a href="https://code.visualstudio.com/">Visual Studio Code</a>- Men
             andre som webstorm eller atom fungerer også fint
           </li>
