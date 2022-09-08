@@ -1,5 +1,4 @@
 import TLDR from "../TLDR";
-import styles from "../../styles/Tasks.module.css";
 import bysykkelJson from "../../data/06.json";
 import { useEffect, useState } from "react";
 import { getCycleRoute } from "../../api/mapbox";
