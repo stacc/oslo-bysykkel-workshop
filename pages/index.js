@@ -39,14 +39,6 @@ export default function Home() {
             className={styles.image}
           />
         </Marker>
-        <Marker longitude={5.3366241} latitude={60.3772036}>
-          <Image
-            src="/echo_logo.png"
-            width={"60px"}
-            height={"20px"}
-            className={styles.image}
-          />
-        </Marker>
       </Map>
     </div>
   );
