@@ -29,7 +29,7 @@ export default function Task6() {
       let rides = findRidesWithLongestDuration(precomputedBysykkelJson);
 
       if (!rides) {
-        throw Error("findRidesWithLongestDuration returned nothing");
+        return
       }
 
       // Allow return of one or more rides
