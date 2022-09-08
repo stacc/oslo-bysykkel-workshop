@@ -80,8 +80,7 @@ export default function Task6() {
         <br /> Dersom man ser i mappen <code>data</code> så har vi et sett med
         filer, som heter <code>01.json</code>, <code>02.json</code>,{" "}
         <code>03.json</code>, etc. Hver fil samsvarer med en måned i 2022. Alle
-        disse filene inneholder tonnevis med tekst. Om dere ser i en av disse
-        filene så vil dere se tonnevis med tekst. Bak denne skjuler det seg
+        disse filene inneholder tonnevis med tekst. Bak denne skjuler det seg
         lister over ulike sykkelturer som er gjort med Bysykler. Her er et
         utdrag av en av turene:
         <br />
