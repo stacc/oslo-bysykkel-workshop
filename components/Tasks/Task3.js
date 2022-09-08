@@ -45,15 +45,14 @@ export default function Task3({stations}) {
                     height={200}
                     className={styles.image}
                 />
-                <p>Legg merke til <code>await</code> som er plassert før <code>axios.get</code>, som vi var innom i en
-                    tidligere oppgave.</p>
+
             </div>
 
             <div className={styles.section}>
                 <h4>Oppgavebeskrivelse</h4>
                 <p>I denne oppgaven skal dere skrive et API-kall.
                     Gå til <code>{`pages/tasks/[nr].js`}</code>. I funksjonen <code>getServerSideProps()</code>
-                    vil du finne en TODO til oppgave 5. </p>
+                    vil du finne en TODO til oppgave 3. </p>
                 <br/>
                 <p>
                     Her skal du implementere et GET-kall mot endepunktet
@@ -73,6 +72,10 @@ export default function Task3({stations}) {
 
                 <p>Dersom kallet er korrekt implementert vil du kunne se en liste over alle
                     stasjoner til Bergen Bysykkel i dropdown-komponentet under.</p>
+
+                    <p>
+                        <b>TIPS:</b> For å returnere korrekt data/response fra Get-kallet, bruk dette: <br></br>
+                        <code>return response.data.data.stations</code></p>
             </div>
 
             <div className={styles.section}>
