@@ -31,7 +31,6 @@ export default function Task2() {
         til <code>Header</code> komponenten, men du spør kanskje deg selv, "hva
         er en komponent?".
       </p>
-      <p>
         Komponenter er en måte å bryte opp kode i mindre deler. Dette gjør vi i
         hovedsak for to grunner;
         <ul>
@@ -44,7 +43,6 @@ export default function Task2() {
         Komponenter i NextJs blir lagret i en mappe som heter{" "}
         <code>components</code>. Navigerer til
         <code> Header</code> komponenten og se om du får til å endre på fargen!
-      </p>
     </div>
   );
 }
