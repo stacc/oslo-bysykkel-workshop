@@ -3,8 +3,8 @@ import Map from "../../config/Map";
 import TLDR from "../TLDR";
 import styles from "../../styles/Tasks.module.css";
 import { Marker, Source, Layer } from "react-map-gl";
-import getCurrentLocation from "../../utils/getCurrentLocation";
-import getClosestStation from "../../utils/getClosestStation";
+import { getCurrentLocation } from "../../utils/getCurrentLocation";
+import { getClosestStation } from "../../utils/getClosestStation";
 import { getPedestrianRoute } from "../../api/mapbox";
 
 export default function Task5({ stations = [] }) {
