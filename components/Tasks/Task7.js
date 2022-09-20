@@ -129,7 +129,7 @@ const Task7 = ({ stations }) => {
         <code>
           https://gbfs.urbansharing.com/bergenbysykkel.no/station_status.json
         </code>
-        . <br />
+        <br />
         <a href="https://bergenbysykkel.no/apne-data/sanntid">
           Dokumentasjon på api-et finner du her!
         </a>

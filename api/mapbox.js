@@ -21,18 +21,3 @@ export const getCycleRoute = async (
   );
   return data;
 };
-
-export const getPedestrianRoute = async (
-  coordinates,
-  options = { format: "geojson" }
-) => {
-  const points = coordinates.reduce((route, coord) => {
-    return [route, `${coord.long},${coord.lat}`].filter((x) => !!x).join(";");
-  }, "");
-
-  const { data } = await mapboxAxios.get(
-    `/directions/v5/mapbox/walking/${points}?continue_straight=true&geometries=${options.format}&overview=simplified`,
-    {}
-  );
-  return data;
-};
