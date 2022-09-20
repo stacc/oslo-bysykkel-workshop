@@ -9,9 +9,11 @@ export default function Task5({ stations = [] }) {
   const [location, setLocation] = useState({ lat: "", lon: "" });
 
   // Bruk denne funksjonen for å finne din lokasjon
+  // bruker getCurrentLocation funksjonen fra utils/getCurrentLocation.js
   async function getMyLocation() {}
 
   // Sett den nærmeste stasjonen på denne variabelen
+  // Bruk getClosestStation funksjonen fra utils/getClosestStation.js
   const closestStation = stations?.[0];
 
   return (
@@ -74,8 +76,8 @@ export default function Task5({ stations = [] }) {
       slutten finner du verdien som verdien blir initialisert med.
       <br />
       <br />
-      Vi har i denne oppgaven definert to useState funksjoner som du kan bruke
-      til å lagre din lokasjon og ruten til stasjonen.
+      Vi har i denne oppgaven definert en useState funksjon som du kan bruke til
+      å lagre din lokasjon.
       <br />
       <br />
       <Map>
