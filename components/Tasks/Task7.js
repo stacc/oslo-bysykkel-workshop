@@ -4,9 +4,23 @@ import Map from "../../config/Map";
 import { Layer, Source } from "react-map-gl";
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
+import axios from "axios";
 
 const getStationsWithAvailability = async (stations) => {
   // TODO: Implement
+  const { data } = await axios.get(
+    "https://gbfs.urbansharing.com/bergenbysykkel.no/station_status.json"
+  );
+  const stationsWithAvailability = data.data.stations.map((station) => {
+    const stationWithAvailability = stations.find(
+      (s) => s.station_id === station.station_id
+    );
+    return {
+      ...stationWithAvailability,
+      availability: station,
+    };
+  });
+  return stationsWithAvailability;
 };
 
 const createGeoJson = (stations) => {
@@ -167,12 +181,12 @@ const Task7 = ({ stations }) => {
         <br />
         Der hver sirkel er en unik stasjon som viser hvor mange sykler som er
         tilgjengelige. Fargene er splittet opp hvor:
-        <ul>
-          <li>Rød - Dersom ingen sykler igjen</li>
-          <li>Gul - Dersom det er opp til 5 sykler tilgjengelige</li>
-          <li>Grønn - Dersom der er mer enn 5 syker tilgjengelige</li>
-        </ul>
       </p>
+      <ul>
+        <li>Rød - Dersom ingen sykler igjen</li>
+        <li>Gul - Dersom det er opp til 5 sykler tilgjengelige</li>
+        <li>Grønn - Dersom der er mer enn 5 syker tilgjengelige</li>
+      </ul>
     </div>
   );
 };

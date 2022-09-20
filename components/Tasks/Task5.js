@@ -1,25 +1,20 @@
 import { useState } from "react";
 import Map from "../../config/Map";
 import TLDR from "../TLDR";
-import styles from "../../styles/Tasks.module.css";
-import { Marker, Source, Layer } from "react-map-gl";
+import { Marker } from "react-map-gl";
 import { getCurrentLocation } from "../../utils/getCurrentLocation";
 import { getClosestStation } from "../../utils/getClosestStation";
-import { getPedestrianRoute } from "../../api/mapbox";
 
 export default function Task5({ stations = [] }) {
   const [location, setLocation] = useState({ lat: "", lon: "" });
-  const [route, setRoute] = useState([]);
 
   // Bruk denne funksjonen for å finne din lokasjon
-  async function getMyLocation() {}
+  async function getMyLocation() {
+    getCurrentLocation().then(setLocation);
+  }
 
   // Sett den nærmeste stasjonen på denne variabelen
-  const closestStation = stations?.[0];
-
-  // Bruk denne funksjonen for å finne en rute mellom to stasjoner
-  // Valgfri oppgave!!
-  async function getRoute() {}
+  const closestStation = getClosestStation(stations, location);
 
   return (
     <div>
@@ -87,27 +82,9 @@ export default function Task5({ stations = [] }) {
       <br />
       <Map>
         {/* Passer kordinat state inn i longitude og latitude under */}
-        <Marker longitude={5.3315857} latitude={60.3809852}>
+        <Marker longitude={closestStation.lon} latitude={closestStation.lat}>
           <img src="/stacc_icon_red.png" width={30} height={30} />
         </Marker>
-
-        {/* Kommenter ut koden under for å tegne en rute på kartet */}
-        {/* Valgfri oppgave!! */}
-        {/* <Source id={`1`} type="geojson" data={route?.routes?.[0]?.geometry}>
-          <Layer
-            type="line"
-            layout={{
-              visibility: "visible",
-              "line-cap": "round",
-              "line-join": "round",
-            }}
-            paint={{
-              "line-color": `rgb(174, 54, 44)`,
-              "line-width": 4,
-              "line-opacity": 1,
-            }}
-          />
-        </Source> */}
       </Map>
       <br />
     </div>

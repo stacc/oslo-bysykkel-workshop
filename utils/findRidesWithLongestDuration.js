@@ -4,7 +4,7 @@
  * @return ride with the longest duration cycled
  */
 const findRidesWithLongestDuration = (data) => {
-  // TODO - implement properly
+  return data.sort((a, b) => b.duration - a.duration).slice(0, 10);
   // Se på sort funksjonen i javascript her: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort
 };
 

@@ -12,7 +12,7 @@ const Map = dynamic(() => import("../config/Map"), {
 export default function Home() {
   return (
     <div className={styles.taskContainer}>
-      <h3>Velkommen til workshop i regi av STACC!💪</h3>
+      <h3>Velkommen til workshop i regi av STACC! Ny Emoji !!!</h3>
       <div>
         I denne workshopen skal vi lære litt om hvordan vi
         <ul>
