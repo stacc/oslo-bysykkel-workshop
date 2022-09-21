@@ -101,7 +101,7 @@ export default function Task0() {
 
             <h2>Begynn på oppgaver</h2>
             <p>
-                Gå til <b>Oppgaver</b> oppe til høyre i menyen på siden du åpnet. (Det kan være
+                Gå til "Oppgaver" oppe til høyre i menyen på siden du åpnet. (Det kan være
                 lurt å ha denne siden (altså https://stacc-girlpower-h22-blond.vercel.app/) coppe i tilfelle du ødelegger noe lokalt :) )
             </p>
         </div>

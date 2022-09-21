@@ -61,7 +61,7 @@ const Task4 = ({stations}) => {
                 dropdown-komponenter.
             </p>
             <b>Å bruke komponenter</b>
-            <p className={styles.section}>
+            <div className={styles.section}>
                 I React bruker vi <em>komponenter</em>, som er biter med kode som kan gjenbrukes.
                 <br/>
                 <br/>
@@ -88,7 +88,7 @@ const Task4 = ({stations}) => {
                     &lt;Apple weight=&#123;0.5&#125; color=&#123;"red"&#125;/&gt;
                     <br/>
                     )</code>
-            </p>
+            </div>
 
             <div className={styles.tasks}>
 
