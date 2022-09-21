@@ -3,13 +3,25 @@ import bysykkelJson from "../../data/06.json";
 import { useEffect, useState } from "react";
 import { getCycleRoute } from "../../api/mapbox";
 import getRouteFromRide from "../../utils/getRouteFromRide";
-import findRidesWithLongestDuration from "../../utils/findRidesWithLongestDuration";
+import findRidesWithLongestDistance from "../../utils/findRidesWithLongestDistance";
 import { MapRouteList } from "../MapRouteList";
 import { getGeodesicDistance } from "../../utils/getGeodesicDistance";
 import styles from "../../styles/Tasks.module.css";
 
+function getUniqueRides(rides) {
+  const uniqueRides = {};
+  rides.forEach((ride) => {
+    const key = `${ride.start_station_id}-${ride.end_station_id}`;
+    if (!uniqueRides[key]) {
+      uniqueRides[key] = ride;
+    }
+  });
+  return Object.values(uniqueRides);
+}
+
 const precomputeDistances = (data) => {
-  return data.map((x) => ({
+  const rides = getUniqueRides(data);
+  return rides.map((x) => ({
     ...x,
     distance: getGeodesicDistance(
       x.start_station_latitude,
@@ -27,10 +39,10 @@ export default function Task6() {
 
   useEffect(() => {
     const asyncCallback = async () => {
-      let rides = findRidesWithLongestDuration(precomputedBysykkelJson);
+      let rides = findRidesWithLongestDistance(precomputedBysykkelJson);
 
       if (!rides) {
-        return
+        return;
       }
 
       // Allow return of one or more rides
@@ -67,7 +79,7 @@ export default function Task6() {
         <p>
           <b>Kort fortalt: </b>Hent ut de lengste turene fra historisk data fra
           Bysykkel. <br />
-          (Tips: Se i <code>utils/findRideWithLongestDuration.js</code>)
+          (Tips: Se i <code>utils/findRideWithLongestDistance.js</code>)
         </p>
       </TLDR>
       <MapRouteList routes={routes} />
@@ -133,7 +145,7 @@ export default function Task6() {
         <br />I dataen har vi allerede <em>lengdegraden</em> og{" "}
         <em>breddegraden</em> (de geografiske koordinatene).
         <br />
-        <br />I filen <code>findRideWithLongestDuration.js</code> skal du
+        <br />I filen <code>findRideWithLongestDistance.js</code> skal du
         implementere funksjonen for å beregne topp ti lengste sykkeldistanse
         mellom start- og sluttstoppet, slik at det vises på kartet dersom det
         implementeres korrekt.
