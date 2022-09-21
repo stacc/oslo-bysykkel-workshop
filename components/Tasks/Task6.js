@@ -154,15 +154,12 @@ export default function Task6() {
         <br />
       </div>
 
-      <div  className={styles.tasks}>
+      <div className={styles.tasks}>
         <b>Oppgaver</b>
         <ul className={styles.listWithIconsPin}>
+          <li>Hent ut de lengste turene fra historisk data fra Bysykkel.</li>
           <li>
-            Hent ut de lengste turene fra historisk data fra
-            Bysykkel.
-          </li>
-          <li>
-            (Tips: Se i <code>utils/findRideWithLongestDuration.js</code>)
+            (Tips: Se i <code>utils/findRideWithLongestDistance.js</code>)
           </li>
           <li>Sjekk ut .sort() funksjonen</li>
         </ul>
