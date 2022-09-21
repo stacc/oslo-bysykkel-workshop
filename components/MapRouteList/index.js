@@ -1,6 +1,6 @@
 import React, { useCallback, useState } from "react";
 import Map from "../../config/Map";
-import styles from "./MapRouteList.module.css"
+import styles from "./MapRouteList.module.css";
 import { Layer, Source } from "react-map-gl";
 import { TransparentButton } from "../Button";
 
@@ -16,7 +16,6 @@ export function MapRouteList({ routes }) {
     },
     [selectedRoute, hoveredRoute]
   );
-
   return (
     <div className={styles.mapRouteList}>
       <Map>
@@ -53,7 +52,7 @@ export function MapRouteList({ routes }) {
             onMouseOver={() => setHoveredRoute(key)}
             onMouseLeave={() => setHoveredRoute(null)}
           >
-            {key + 1}: {Math.round(route.duration / 60)} min {route.duration % 60 > 0 ? `og ${route.duration % 60} sek`: ""}
+            {key + 1}: {route.distance.toFixed(0)} m
           </TransparentButton>
         ))}
       </div>
