@@ -6,6 +6,7 @@ import getRouteFromRide from "../../utils/getRouteFromRide";
 import findRidesWithLongestDuration from "../../utils/findRidesWithLongestDuration";
 import { MapRouteList } from "../MapRouteList";
 import { getGeodesicDistance } from "../../utils/getGeodesicDistance";
+import styles from "../../styles/Tasks.module.css";
 
 const precomputeDistances = (data) => {
   return data.map((x) => ({
@@ -139,6 +140,20 @@ export default function Task6() {
         <em>Fikser du det? </em>
         <br />
         <br />
+      </div>
+
+      <div  className={styles.tasks}>
+        <b>Oppgaver</b>
+        <ul className={styles.listWithIconsPin}>
+          <li>
+            Hent ut de lengste turene fra historisk data fra
+            Bysykkel.
+          </li>
+          <li>
+            (Tips: Se i <code>utils/findRideWithLongestDuration.js</code>)
+          </li>
+          <li>Sjekk ut .sort() funksjonen</li>
+        </ul>
       </div>
     </div>
   );

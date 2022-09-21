@@ -6,6 +6,7 @@ import {Layer, Source} from "react-map-gl";
 import React, {useState} from "react";
 import {getCycleRoute} from "../../api/mapbox";
 import {formatStationsForDropdown} from "../../utils/formatStationsForDropdown";
+import DropDown from "../InputFields/DropDown";
 
 const Task4 = ({stations}) => {
     const choices = formatStationsForDropdown(stations)
@@ -87,10 +88,10 @@ const Task4 = ({stations}) => {
                     &lt;Apple weight=&#123;0.5&#125; color=&#123;"red"&#125;/&gt;
                     <br/>
                     )</code>
-
-
-
             </p>
+
+            <div className={styles.tasks}>
+
             <b>Oppgaver</b>
             <ul className={styles.listWithIcons}>
                 <li>
@@ -116,8 +117,8 @@ const Task4 = ({stations}) => {
                 <li>
                    Har du gjort alt rett, vil du nå se et kart med en sykkelrute under! 🎉
                 </li>
-
             </ul>
+            </div>
 
             <p className={styles.section}>Hvor skal vi reise?</p>
             <form className={styles.form} id={"routePlanner"} onSubmit={onSubmit}>

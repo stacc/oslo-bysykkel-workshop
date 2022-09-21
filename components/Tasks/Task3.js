@@ -92,6 +92,16 @@ export default function Task3({ stations }) {
         </p>
       </div>
 
+      <div className={styles.tasks}>
+        <b>Oppgaver</b>
+        <ul className={styles.listWithIconsPin}>
+          <li>
+            Du skal skrive et kall ved bruk av axios for å hente ut alle stasjoner
+            fra Bysykkel sitt endepunkt slik at dropdown-komponentet fylles.
+          </li>
+        </ul>
+      </div>
+
       <div className={styles.section}>
         <h4>Resultat</h4>
         <DropDown choices={choices} label="Tilgjengelig stasjoner" />
