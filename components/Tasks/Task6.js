@@ -92,40 +92,40 @@ export default function Task6() {
         <br />
         <br /> Dersom man ser i mappen <code>data</code> så har vi et sett med
         filer, som heter <code>01.json</code>, <code>02.json</code>,{" "}
-        <code>03.json</code>, etc. Hver fil samsvarer med en måned i 2022. Alle
-        disse filene inneholder tonnevis med tekst. Bak denne skjuler det seg
-        lister over ulike sykkelturer som er gjort med Bysykler. Her er et
+        <code>03.json</code>, etc. Hver fil samsvarer med en måned i 2022/2023.
+        Alle disse filene inneholder tonnevis med tekst. Bak denne skjuler det
+        seg lister over ulike sykkelturer som er gjort med Bysykler. Her er et
         utdrag av en av turene:
         <br />
         <br />
         <code>
           {"{"}
           <br />
-          "started_at": "2022-01-01 04:01:22.287000+00:00",
+          "started_at": "2023-01-01 05:45:40.335000+00:00",
           <br />
-          "ended_at": "2022-01-01 04:19:41.611000+00:00",
+          "ended_at": "2023-01-01 05:51:25.149000+00:00",
           <br />
-          "duration": 1099,
+          "duration": 344,
           <br />
-          "start_station_id": "33",
+          "start_station_id": "499",
           <br />
-          "start_station_name": "Høgskulen på Vestlandet",
+          "start_station_name": "Bjerregaards gate",
           <br />
-          "start_station_description": "Ved hovedinngang til skolen",
+          "start_station_description": "Ovenfor Fredrikke Qvams gate",
           <br />
-          "start_station_latitude": 60.369179844976586,
+          "start_station_latitude": 59.925488,
           <br />
-          "start_station_longitude": 5.349443793165847,
+          "start_station_longitude": 10.746058,
           <br />
-          "end_station_id": "132",
+          "end_station_id": "423",
           <br />
-          "end_station_name": "Nøstetorget",
+          "end_station_name": "Schous plass",
           <br />
-          "end_station_description": "Sukkerhusbryggen",
+          "end_station_description": "Nærmest rundkjøringen",
           <br />
-          "end_station_latitude": 60.39222475946063,
+          "end_station_latitude": 59.920335,
           <br />
-          "end_station_longitude": 5.314881116119068
+          "end_station_longitude": 10.760804
           <br />
           {"}"}
         </code>

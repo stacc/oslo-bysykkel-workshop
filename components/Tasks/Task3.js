@@ -63,7 +63,7 @@ export default function Task3({ stations }) {
           Her skal du implementere et GET-kall mot endepunktet
           <code>
             {" "}
-            https://gbfs.urbansharing.com/bergenbysykkel.no/station_information.json{" "}
+            https://gbfs.urbansharing.com/oslobysykkel.no/station_information.json{" "}
           </code>
           for å kunne hente ut alle stasjoner.
         </p>
@@ -82,7 +82,7 @@ export default function Task3({ stations }) {
 
         <p>
           Dersom kallet er korrekt implementert vil du kunne se en liste over
-          alle stasjoner til Bergen Bysykkel i dropdown-komponentet under.
+          alle stasjoner til Oslo Bysykkel i dropdown-komponentet under.
         </p>
 
         <p>
